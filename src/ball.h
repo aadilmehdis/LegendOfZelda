@@ -16,6 +16,21 @@ public:
     std::vector<GLfloat> icosa();
     void tick();
     double speed;
+
+    glm::vec3 xLocal;
+    glm::vec3 yLocal;
+    glm::vec3 zLocal;
+
+    void yawLeft();
+    void yawRight();
+
+    void pitchUp();
+    void pitchDown();
+
+    void rollCC();
+    void rollACC();
+
+
 private:
     VAO *object;
 };

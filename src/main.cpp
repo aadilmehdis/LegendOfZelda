@@ -16,7 +16,7 @@ Ball ball1;
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
-float eyepos_x=0,eyepos_y=0,eyepos_z=0;
+float eyepos_x=8,eyepos_y=7,eyepos_z=10;
 
 Timer t60(1.0 / 60);
 
@@ -65,27 +65,27 @@ void tick_input(GLFWwindow *window) {
     int d = glfwGetKey(window, GLFW_KEY_D);
 
     if (left) {
-        eyepos_y -= 1;
+        ball1.yawLeft();
     }
     if(right)
     {
-        eyepos_y += 1;
+        ball1.yawRight();
     }
     if(up)
     {
-        eyepos_z += 1;
+        ball1.pitchUp();
     }
     if(down)
     {
-        eyepos_z -= 1;
+        ball1.pitchDown();
     }
     if(a)
     {
-        eyepos_x -= 1;
+        ball1.rollACC();
     }
     if(d)
     {
-        eyepos_x += 1;
+        ball1.rollCC();
     }
 }
 
@@ -146,6 +146,8 @@ int main(int argc, char **argv) {
 
             tick_elements();
             tick_input(window);
+
+            // cout<<eyepos_x<<" "<<eyepos_y<<" "<<eyepos_z<<"\n";
         }
 
         // Poll for Keyboard and mouse events
