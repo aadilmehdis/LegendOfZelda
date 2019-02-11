@@ -760,6 +760,33 @@ src/other_handlers.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.s
 .PHONY : src/other_handlers.cpp.s
 
+src/shapes.o: src/shapes.cpp.o
+
+.PHONY : src/shapes.o
+
+# target to build an object file
+src/shapes.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/shapes.cpp.o
+.PHONY : src/shapes.cpp.o
+
+src/shapes.i: src/shapes.cpp.i
+
+.PHONY : src/shapes.i
+
+# target to preprocess a source file
+src/shapes.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/shapes.cpp.i
+.PHONY : src/shapes.cpp.i
+
+src/shapes.s: src/shapes.cpp.s
+
+.PHONY : src/shapes.s
+
+# target to generate assembly for a file
+src/shapes.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/shapes.cpp.s
+.PHONY : src/shapes.cpp.s
+
 src/timer.o: src/timer.cpp.o
 
 .PHONY : src/timer.o
@@ -851,6 +878,9 @@ help:
 	@echo "... src/other_handlers.o"
 	@echo "... src/other_handlers.i"
 	@echo "... src/other_handlers.s"
+	@echo "... src/shapes.o"
+	@echo "... src/shapes.i"
+	@echo "... src/shapes.s"
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"

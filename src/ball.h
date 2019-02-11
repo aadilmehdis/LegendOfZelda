@@ -12,6 +12,8 @@ public:
     float rotation;
     void draw(glm::mat4 VP);
     void set_position(float x, float y);
+    std::vector<GLfloat> computeVertices(float radius);
+    std::vector<GLfloat> icosa();
     void tick();
     double speed;
 private:

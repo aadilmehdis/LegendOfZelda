@@ -1,52 +1,102 @@
 #include "ball.h"
 #include "main.h"
+#include "shapes.h"
 
 Ball::Ball(float x, float y, color_t color) {
     this->position = glm::vec3(x, y, 0);
     this->rotation = 0;
     speed = 1;
-    // Our vertices. Three consecutive floats give a 3D vertex; Three consecutive vertices give a triangle.
-    // A cube has 6 faces with 2 triangles each, so this makes 6*2=12 triangles, and 12*3 vertices
-    static const GLfloat vertex_buffer_data[] = {
-        -1.0f,-1.0f,-1.0f, // triangle 1 : begin
-        -1.0f,-1.0f, 1.0f,
-        -1.0f, 1.0f, 1.0f, // triangle 1 : end
-        1.0f, 1.0f,-1.0f, // triangle 2 : begin
-        -1.0f,-1.0f,-1.0f,
-        -1.0f, 1.0f,-1.0f, // triangle 2 : end
-        1.0f,-1.0f, 1.0f,
-        -1.0f,-1.0f,-1.0f,
-        1.0f,-1.0f,-1.0f,
-        1.0f, 1.0f,-1.0f,
-        1.0f,-1.0f,-1.0f,
-        -1.0f,-1.0f,-1.0f,
-        -1.0f,-1.0f,-1.0f,
-        -1.0f, 1.0f, 1.0f,
-        -1.0f, 1.0f,-1.0f,
-        1.0f,-1.0f, 1.0f,
-        -1.0f,-1.0f, 1.0f,
-        -1.0f,-1.0f,-1.0f,
-        -1.0f, 1.0f, 1.0f,
-        -1.0f,-1.0f, 1.0f,
-        1.0f,-1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f,-1.0f,-1.0f,
-        1.0f, 1.0f,-1.0f,
-        1.0f,-1.0f,-1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f,-1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f,-1.0f,
-        -1.0f, 1.0f,-1.0f,
-        1.0f, 1.0f, 1.0f,
-        -1.0f, 1.0f,-1.0f,
-        -1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        -1.0f, 1.0f, 1.0f,
-        1.0f,-1.0f, 1.0f
-    };
 
-    this->object = create3DObject(GL_TRIANGLES, 12*3, vertex_buffer_data, color, GL_FILL);
+	std::vector<GLfloat> vertex_buffer = makePrism(10,1, 10, false,0,0, 0);
+	std::vector<GLfloat> vertex_buffer2 = makeFrustum(10, 1, 0.6, 1, false,0,0, -10);
+	std::vector<GLfloat> vertex_buffer3 = makeFrustum(10,0.8,1,0.8,true,0,0,0.8);
+	std::vector<GLfloat> vertex_buffer4 = makePrism(10,0.6, 2, true,2.5,0, -5.5);
+	std::vector<GLfloat> vertex_buffer5 = makePrism(10,0.6, 2, true,-2.5,0, -5.5);
+	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer2.begin(), vertex_buffer2.end());
+	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer3.begin(), vertex_buffer3.end());
+	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer4.begin(), vertex_buffer4.end());
+	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer5.begin(), vertex_buffer5.end());
+	
+	//tail
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(-3);
+
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(3);
+	vertex_buffer.push_back(0.5);
+
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(3);
+	vertex_buffer.push_back(0.5);
+
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(3);
+	vertex_buffer.push_back(2);
+	//tail close
+
+	//fin
+	vertex_buffer.push_back(-4);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+
+	vertex_buffer.push_back(4);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(-3);
+
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+
+	vertex_buffer.push_back(4);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+
+	vertex_buffer.push_back(4.3);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(1);
+
+
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+
+	vertex_buffer.push_back(-4);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+
+	vertex_buffer.push_back(-4.3);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(1);
+
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(-8);
+
+	vertex_buffer.push_back(7);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(-6);
+
+	vertex_buffer.push_back(-7);
+	vertex_buffer.push_back(0);
+	vertex_buffer.push_back(-6);
+	//fin close
+
+
+
+    this->object = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), color, GL_LINE);
 }
 
 void Ball::draw(glm::mat4 VP) {
@@ -66,8 +116,7 @@ void Ball::set_position(float x, float y) {
 }
 
 void Ball::tick() {
-    this->rotation += speed;
+    // this->rotation += speed;
     // this->position.x -= speed;
     // this->position.y -= speed;
 }
-
