@@ -123,7 +123,7 @@ void tick_input(GLFWwindow *window) {
 	    cameraRotationVector1 = glm::vec3(rotate * glm::vec4(cameraRotationVector1,0.0));
         eye = jet.position + cameraRotationVector1;
         target = jet.position;
-        glm::vec3 zDir = target - eye
+        glm::vec3 zDir = target - eye;
         eye = eye + helicopZoom * glm::normalize(zDir);
     }
     else if(towerView)
