@@ -1,13 +1,17 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/graphics_asgn1.dir/src/bomb.cpp.o"
+  "CMakeFiles/graphics_asgn1.dir/src/canon.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/color.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/input.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/jet.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/main.cpp.o"
+  "CMakeFiles/graphics_asgn1.dir/src/missile.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/sea.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/shapes.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/timer.cpp.o"
+  "CMakeFiles/graphics_asgn1.dir/src/volcano.cpp.o"
   "graphics_asgn1.pdb"
   "graphics_asgn1"
 )

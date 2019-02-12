@@ -598,6 +598,60 @@ LinearMath/fast:
 	$(MAKE) -f external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build.make external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build
 .PHONY : LinearMath/fast
 
+src/bomb.o: src/bomb.cpp.o
+
+.PHONY : src/bomb.o
+
+# target to build an object file
+src/bomb.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/bomb.cpp.o
+.PHONY : src/bomb.cpp.o
+
+src/bomb.i: src/bomb.cpp.i
+
+.PHONY : src/bomb.i
+
+# target to preprocess a source file
+src/bomb.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/bomb.cpp.i
+.PHONY : src/bomb.cpp.i
+
+src/bomb.s: src/bomb.cpp.s
+
+.PHONY : src/bomb.s
+
+# target to generate assembly for a file
+src/bomb.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/bomb.cpp.s
+.PHONY : src/bomb.cpp.s
+
+src/canon.o: src/canon.cpp.o
+
+.PHONY : src/canon.o
+
+# target to build an object file
+src/canon.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/canon.cpp.o
+.PHONY : src/canon.cpp.o
+
+src/canon.i: src/canon.cpp.i
+
+.PHONY : src/canon.i
+
+# target to preprocess a source file
+src/canon.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/canon.cpp.i
+.PHONY : src/canon.cpp.i
+
+src/canon.s: src/canon.cpp.s
+
+.PHONY : src/canon.s
+
+# target to generate assembly for a file
+src/canon.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/canon.cpp.s
+.PHONY : src/canon.cpp.s
+
 src/color.o: src/color.cpp.o
 
 .PHONY : src/color.o
@@ -705,6 +759,33 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/missile.o: src/missile.cpp.o
+
+.PHONY : src/missile.o
+
+# target to build an object file
+src/missile.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/missile.cpp.o
+.PHONY : src/missile.cpp.o
+
+src/missile.i: src/missile.cpp.i
+
+.PHONY : src/missile.i
+
+# target to preprocess a source file
+src/missile.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/missile.cpp.i
+.PHONY : src/missile.cpp.i
+
+src/missile.s: src/missile.cpp.s
+
+.PHONY : src/missile.s
+
+# target to generate assembly for a file
+src/missile.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/missile.cpp.s
+.PHONY : src/missile.cpp.s
 
 src/nonedit.o: src/nonedit.cpp.o
 
@@ -841,6 +922,33 @@ src/timer.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/timer.cpp.s
 .PHONY : src/timer.cpp.s
 
+src/volcano.o: src/volcano.cpp.o
+
+.PHONY : src/volcano.o
+
+# target to build an object file
+src/volcano.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/volcano.cpp.o
+.PHONY : src/volcano.cpp.o
+
+src/volcano.i: src/volcano.cpp.i
+
+.PHONY : src/volcano.i
+
+# target to preprocess a source file
+src/volcano.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/volcano.cpp.i
+.PHONY : src/volcano.cpp.i
+
+src/volcano.s: src/volcano.cpp.s
+
+.PHONY : src/volcano.s
+
+# target to generate assembly for a file
+src/volcano.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/volcano.cpp.s
+.PHONY : src/volcano.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -887,6 +995,12 @@ help:
 	@echo "... BulletCollision"
 	@echo "... BulletDynamics"
 	@echo "... LinearMath"
+	@echo "... src/bomb.o"
+	@echo "... src/bomb.i"
+	@echo "... src/bomb.s"
+	@echo "... src/canon.o"
+	@echo "... src/canon.i"
+	@echo "... src/canon.s"
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"
@@ -899,6 +1013,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/missile.o"
+	@echo "... src/missile.i"
+	@echo "... src/missile.s"
 	@echo "... src/nonedit.o"
 	@echo "... src/nonedit.i"
 	@echo "... src/nonedit.s"
@@ -914,6 +1031,9 @@ help:
 	@echo "... src/timer.o"
 	@echo "... src/timer.i"
 	@echo "... src/timer.s"
+	@echo "... src/volcano.o"
+	@echo "... src/volcano.i"
+	@echo "... src/volcano.s"
 .PHONY : help
 
 

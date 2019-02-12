@@ -72,7 +72,7 @@ CMakeFiles/graphics_asgn1.dir/all: external/CMakeFiles/GLEW_1130.dir/all
 CMakeFiles/graphics_asgn1.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/depend
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=85,86 "Built target graphics_asgn1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=84,85,86,87 "Built target graphics_asgn1"
 .PHONY : CMakeFiles/graphics_asgn1.dir/all
 
 # Include target in all.
@@ -82,7 +82,7 @@ all: CMakeFiles/graphics_asgn1.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/graphics_asgn1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/graphics_asgn1.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : CMakeFiles/graphics_asgn1.dir/rule
@@ -186,7 +186,7 @@ clean: external/CMakeFiles/ANTTWEAKBAR_116_OGLCORE_GLFW.dir/clean
 external/CMakeFiles/GLEW_1130.dir/all:
 	$(MAKE) -f external/CMakeFiles/GLEW_1130.dir/build.make external/CMakeFiles/GLEW_1130.dir/depend
 	$(MAKE) -f external/CMakeFiles/GLEW_1130.dir/build.make external/CMakeFiles/GLEW_1130.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=37 "Built target GLEW_1130"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num= "Built target GLEW_1130"
 .PHONY : external/CMakeFiles/GLEW_1130.dir/all
 
 # Include target in all.
@@ -196,7 +196,7 @@ all: external/CMakeFiles/GLEW_1130.dir/all
 
 # Build rule for subdir invocation for target.
 external/CMakeFiles/GLEW_1130.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 external/CMakeFiles/GLEW_1130.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/CMakeFiles/GLEW_1130.dir/rule
@@ -298,7 +298,7 @@ external/glfw-3.1.2/src/preinstall:
 external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all:
 	$(MAKE) -f external/glfw-3.1.2/src/CMakeFiles/glfw.dir/build.make external/glfw-3.1.2/src/CMakeFiles/glfw.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/src/CMakeFiles/glfw.dir/build.make external/glfw-3.1.2/src/CMakeFiles/glfw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=80,81,82,83 "Built target glfw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=79,80,81,82 "Built target glfw"
 .PHONY : external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 
 # Include target in all.
@@ -365,7 +365,7 @@ external/glfw-3.1.2/examples/preinstall:
 external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/build.make external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/build.make external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=87 "Built target heightmap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num= "Built target heightmap"
 .PHONY : external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/all
 
 # Include target in all.
@@ -375,7 +375,7 @@ all: external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/all
 
 # Build rule for subdir invocation for target.
 external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/glfw-3.1.2/examples/CMakeFiles/heightmap.dir/rule
@@ -587,7 +587,7 @@ clean: external/glfw-3.1.2/examples/CMakeFiles/gears.dir/clean
 external/glfw-3.1.2/examples/CMakeFiles/boing.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/examples/CMakeFiles/boing.dir/build.make external/glfw-3.1.2/examples/CMakeFiles/boing.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/examples/CMakeFiles/boing.dir/build.make external/glfw-3.1.2/examples/CMakeFiles/boing.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=75 "Built target boing"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num= "Built target boing"
 .PHONY : external/glfw-3.1.2/examples/CMakeFiles/boing.dir/all
 
 # Include target in all.
@@ -597,7 +597,7 @@ all: external/glfw-3.1.2/examples/CMakeFiles/boing.dir/all
 
 # Build rule for subdir invocation for target.
 external/glfw-3.1.2/examples/CMakeFiles/boing.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 external/glfw-3.1.2/examples/CMakeFiles/boing.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/glfw-3.1.2/examples/CMakeFiles/boing.dir/rule
@@ -820,7 +820,7 @@ clean: external/glfw-3.1.2/tests/CMakeFiles/tearing.dir/clean
 external/glfw-3.1.2/tests/CMakeFiles/empty.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/empty.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/empty.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/empty.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/empty.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=77 "Built target empty"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num= "Built target empty"
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/empty.dir/all
 
 # Include target in all.
@@ -830,7 +830,7 @@ all: external/glfw-3.1.2/tests/CMakeFiles/empty.dir/all
 
 # Build rule for subdir invocation for target.
 external/glfw-3.1.2/tests/CMakeFiles/empty.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 external/glfw-3.1.2/tests/CMakeFiles/empty.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/empty.dir/rule
@@ -857,7 +857,7 @@ clean: external/glfw-3.1.2/tests/CMakeFiles/empty.dir/clean
 external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=84 "Built target glfwinfo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=83 "Built target glfwinfo"
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/all
 
 # Include target in all.
@@ -894,7 +894,7 @@ clean: external/glfw-3.1.2/tests/CMakeFiles/glfwinfo.dir/clean
 external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num= "Built target cursor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=76 "Built target cursor"
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/all
 
 # Include target in all.
@@ -904,7 +904,7 @@ all: external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/all
 
 # Build rule for subdir invocation for target.
 external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/rule
@@ -931,7 +931,7 @@ clean: external/glfw-3.1.2/tests/CMakeFiles/cursor.dir/clean
 external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num= "Built target monitors"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=90 "Built target monitors"
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/all
 
 # Include target in all.
@@ -941,7 +941,7 @@ all: external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/all
 
 # Build rule for subdir invocation for target.
 external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/monitors.dir/rule
@@ -1042,7 +1042,7 @@ clean: external/glfw-3.1.2/tests/CMakeFiles/joysticks.dir/clean
 external/glfw-3.1.2/tests/CMakeFiles/events.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/events.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/events.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/events.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/events.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=78 "Built target events"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=77 "Built target events"
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/events.dir/all
 
 # Include target in all.
@@ -1116,7 +1116,7 @@ clean: external/glfw-3.1.2/tests/CMakeFiles/iconify.dir/clean
 external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=79 "Built target gamma"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=78 "Built target gamma"
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/gamma.dir/all
 
 # Include target in all.
@@ -1190,7 +1190,7 @@ clean: external/glfw-3.1.2/tests/CMakeFiles/sharing.dir/clean
 external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=90 "Built target msaa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num= "Built target msaa"
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/all
 
 # Include target in all.
@@ -1200,7 +1200,7 @@ all: external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/all
 
 # Build rule for subdir invocation for target.
 external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/rule
@@ -1227,7 +1227,7 @@ clean: external/glfw-3.1.2/tests/CMakeFiles/msaa.dir/clean
 external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/all: external/glfw-3.1.2/src/CMakeFiles/glfw.dir/all
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/depend
 	$(MAKE) -f external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/build.make external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=76 "Built target clipboard"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=75 "Built target clipboard"
 .PHONY : external/glfw-3.1.2/tests/CMakeFiles/clipboard.dir/all
 
 # Include target in all.
@@ -1392,7 +1392,7 @@ external/bullet-2.81-rev2613/src/BulletSoftBody/preinstall:
 external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/all:
 	$(MAKE) -f external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/build.make external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/depend
 	$(MAKE) -f external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/build.make external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=35,36 "Built target BulletSoftBody"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=34,35,36 "Built target BulletSoftBody"
 .PHONY : external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/all
 
 # Include target in all.
@@ -1402,7 +1402,7 @@ all: external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.d
 
 # Build rule for subdir invocation for target.
 external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/bullet-2.81-rev2613/src/BulletSoftBody/CMakeFiles/BulletSoftBody.dir/rule
@@ -1502,7 +1502,7 @@ external/bullet-2.81-rev2613/src/BulletDynamics/preinstall:
 external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/all:
 	$(MAKE) -f external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/build.make external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/depend
 	$(MAKE) -f external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/build.make external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=29,30,31,32,33,34 "Built target BulletDynamics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=29,30,31,32,33 "Built target BulletDynamics"
 .PHONY : external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/all
 
 # Include target in all.
@@ -1512,7 +1512,7 @@ all: external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.d
 
 # Build rule for subdir invocation for target.
 external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/bullet-2.81-rev2613/src/BulletDynamics/CMakeFiles/BulletDynamics.dir/rule
@@ -1557,7 +1557,7 @@ external/bullet-2.81-rev2613/src/LinearMath/preinstall:
 external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/all:
 	$(MAKE) -f external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build.make external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/depend
 	$(MAKE) -f external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build.make external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=38,39 "Built target LinearMath"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles --progress-num=37,38,39 "Built target LinearMath"
 .PHONY : external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/all
 
 # Include target in all.
@@ -1567,7 +1567,7 @@ all: external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/all
 
 # Build rule for subdir invocation for target.
 external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/build/CMakeFiles 0
 .PHONY : external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/rule

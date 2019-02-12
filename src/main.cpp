@@ -16,12 +16,21 @@ GLFWwindow *window;
 Jet jet;
 
 float screen_zoom = 0.2, screen_center_x = 0, screen_center_y = 0;
-float camera_rotation_angle = 0;
+float camera_rotation_angle1 = 0;
+// float camera_rotation_angle2 = 0;
+
+bool mouseDown = false;
+int mousetimer = 0;
+glm::vec3 cameraRotationVector1 = glm::vec3(20,0,0);
+glm::vec3 cameraRotationVector2 = glm::vec3(20,0,0);
 
 vector<Sea> seaTiles;
 
 glm::vec3 eye = glm::vec3(0,0,18);
 glm::vec3 target;
+glm::vec3 up;
+
+double mouseXPos, mouseYPos, mouseXPosOld, mouseYPosOld;
 
 Timer t60(1.0 / 60);
 
@@ -41,7 +50,7 @@ void draw() {
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
     // glm::vec3 target (targetpos_x, targetpos_y, targetpos_z);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
-    glm::vec3 up (0, 1, 0);
+    // glm::vec3 up (0, 1, 0);
 
     // Compute Camera matrix (view)
     Matrices.view = glm::lookAt( eye, target, up ); // Rotating Camera for 3D
@@ -68,11 +77,65 @@ void draw() {
 void tick_input(GLFWwindow *window) {
     int left  = glfwGetKey(window, GLFW_KEY_LEFT);
     int right = glfwGetKey(window, GLFW_KEY_RIGHT);
-    int up  = glfwGetKey(window, GLFW_KEY_UP);
+    int upk  = glfwGetKey(window, GLFW_KEY_UP);
     int down = glfwGetKey(window, GLFW_KEY_DOWN);
     int a = glfwGetKey(window, GLFW_KEY_A);
     int d = glfwGetKey(window, GLFW_KEY_D);
-    int z = glfwGetKey(window, GLFW_KEY_Z);
+
+    int followCamView           = glfwGetKey(window, GLFW_KEY_Z);
+    int towerView               = glfwGetKey(window, GLFW_KEY_X);
+    int helicopterView          = glfwGetKey(window, GLFW_KEY_C);
+    int topView                 = glfwGetKey(window, GLFW_KEY_V);
+    int jetView                 = glfwGetKey(window, GLFW_KEY_B);
+
+    if(jetView)
+    {
+        eye = jet.position + jet.zLocal * -5.0f;
+        target = jet.position + jet.zLocal * -1000.0f;
+        up = jet.yLocal;
+    }
+    else if(topView)
+    {
+        eye = jet.position + glm::vec3(1,30,0);
+        target = jet.position;
+        up = glm::vec3(0,0,-1);
+    }
+    else if(helicopterView)
+    {
+        camera_rotation_angle1 = 0;
+        if(mouseDown == true)
+        {
+            glfwGetCursorPos(window, &mouseXPos, &mouseYPos);
+            if(mouseXPos  > mouseXPosOld)
+            {
+                camera_rotation_angle1 -= 2;
+            }
+            else if(mouseXPos  < mouseXPosOld)
+            {
+                camera_rotation_angle1 += 2;
+            }
+        }
+        cout<<"Cam Rot Angl : "<<camera_rotation_angle1<<"\n";
+        glm::mat4 rotate = glm::rotate((float) (camera_rotation_angle1 * M_PI / 180.0f), glm::vec3(0,-1,0));
+	    cameraRotationVector1 = glm::vec3(rotate * glm::vec4(cameraRotationVector1,0.0));
+        eye = jet.position + cameraRotationVector1;
+        target = jet.position;
+    }
+    else if(towerView)
+    {
+        eye = jet.position + glm::vec3(40,20,10);
+        target = jet.position;
+        up = glm::vec3(0,1,0);
+    }
+    else if(followCamView || true)
+    {
+        eye = jet.position + jet.zLocal*30.0f + jet.yLocal*10.0f;
+        up = jet.yLocal;
+        target = jet.position;
+    }
+    
+
+
 
     if (left) {
         jet.yawLeft();
@@ -81,7 +144,7 @@ void tick_input(GLFWwindow *window) {
     {
         jet.yawRight();
     }
-    if(up)
+    if(upk)
     {
         jet.pitchUp();
     }
@@ -97,20 +160,16 @@ void tick_input(GLFWwindow *window) {
     {
         jet.rollCC();
     }
-
-    if(z) 
-    {
-        // eyepos_x = jet.position.x;
-        // eyepos_y = jet.position.y-20;
-        // eyepos_z = jet.position.z;
-    }
 }
 
 void tick_elements() {
     jet.tick();
-    camera_rotation_angle += 1;
-    // eye = jet.position + jet.zLocal*10.0f + jet.yLocal*10.0f;
-    target = jet.position;
+    mousetimer++;
+    
+    if(mousetimer%3==0)
+    {
+        glfwGetCursorPos(window, &mouseXPosOld, &mouseYPosOld);
+    }
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -120,7 +179,8 @@ void initGL(GLFWwindow *window, int width, int height) {
     // Create the models
 
     jet       = Jet(0, 0, COLOR_RED);
-    // eye = jet.position-jet.zLocal;
+    eye = jet.position + jet.zLocal*30.0f + jet.yLocal*10.0f;
+
     target = jet.position;
 
     for(int i=-10;i<10;++i)
@@ -161,6 +221,7 @@ int main(int argc, char **argv) {
     window = initGLFW(width, height);
 
     initGL (window, width, height);
+    glfwSetMouseButtonCallback(window, mouseButtonCallBack);
 
     /* Draw in loop */
     while (!glfwWindowShouldClose(window)) {
@@ -197,4 +258,22 @@ void reset_screen() {
     float left   = screen_center_x - 4 / screen_zoom;
     float right  = screen_center_x + 4 / screen_zoom;
     Matrices.projection = glm::ortho(left, right, bottom, top, 0.1f, 500.0f);
+}
+
+
+void mouseButtonCallBack(GLFWwindow *window, int button, int action, int mods) {
+
+    if(button == GLFW_MOUSE_BUTTON_LEFT || button == GLFW_MOUSE_BUTTON_RIGHT)
+    {
+        if(GLFW_PRESS == action)
+        {
+            mouseDown = true;
+            cout<<"Down\n";
+        }
+        else 
+        {
+            mouseDown = false;
+            cout<<"Up\n";
+        }
+    }
 }
