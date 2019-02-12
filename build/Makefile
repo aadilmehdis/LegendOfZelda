@@ -598,33 +598,6 @@ LinearMath/fast:
 	$(MAKE) -f external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build.make external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build
 .PHONY : LinearMath/fast
 
-src/ball.o: src/ball.cpp.o
-
-.PHONY : src/ball.o
-
-# target to build an object file
-src/ball.cpp.o:
-	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/ball.cpp.o
-.PHONY : src/ball.cpp.o
-
-src/ball.i: src/ball.cpp.i
-
-.PHONY : src/ball.i
-
-# target to preprocess a source file
-src/ball.cpp.i:
-	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/ball.cpp.i
-.PHONY : src/ball.cpp.i
-
-src/ball.s: src/ball.cpp.s
-
-.PHONY : src/ball.s
-
-# target to generate assembly for a file
-src/ball.cpp.s:
-	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/ball.cpp.s
-.PHONY : src/ball.cpp.s
-
 src/color.o: src/color.cpp.o
 
 .PHONY : src/color.o
@@ -678,6 +651,33 @@ src/input.s: src/input.cpp.s
 src/input.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/input.cpp.s
 .PHONY : src/input.cpp.s
+
+src/jet.o: src/jet.cpp.o
+
+.PHONY : src/jet.o
+
+# target to build an object file
+src/jet.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/jet.cpp.o
+.PHONY : src/jet.cpp.o
+
+src/jet.i: src/jet.cpp.i
+
+.PHONY : src/jet.i
+
+# target to preprocess a source file
+src/jet.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/jet.cpp.i
+.PHONY : src/jet.cpp.i
+
+src/jet.s: src/jet.cpp.s
+
+.PHONY : src/jet.s
+
+# target to generate assembly for a file
+src/jet.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/jet.cpp.s
+.PHONY : src/jet.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -759,6 +759,33 @@ src/other_handlers.s: src/other_handlers.cpp.s
 src/other_handlers.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.s
 .PHONY : src/other_handlers.cpp.s
+
+src/sea.o: src/sea.cpp.o
+
+.PHONY : src/sea.o
+
+# target to build an object file
+src/sea.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/sea.cpp.o
+.PHONY : src/sea.cpp.o
+
+src/sea.i: src/sea.cpp.i
+
+.PHONY : src/sea.i
+
+# target to preprocess a source file
+src/sea.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/sea.cpp.i
+.PHONY : src/sea.cpp.i
+
+src/sea.s: src/sea.cpp.s
+
+.PHONY : src/sea.s
+
+# target to generate assembly for a file
+src/sea.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/sea.cpp.s
+.PHONY : src/sea.cpp.s
 
 src/shapes.o: src/shapes.cpp.o
 
@@ -860,15 +887,15 @@ help:
 	@echo "... BulletCollision"
 	@echo "... BulletDynamics"
 	@echo "... LinearMath"
-	@echo "... src/ball.o"
-	@echo "... src/ball.i"
-	@echo "... src/ball.s"
 	@echo "... src/color.o"
 	@echo "... src/color.i"
 	@echo "... src/color.s"
 	@echo "... src/input.o"
 	@echo "... src/input.i"
 	@echo "... src/input.s"
+	@echo "... src/jet.o"
+	@echo "... src/jet.i"
+	@echo "... src/jet.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -878,6 +905,9 @@ help:
 	@echo "... src/other_handlers.o"
 	@echo "... src/other_handlers.i"
 	@echo "... src/other_handlers.s"
+	@echo "... src/sea.o"
+	@echo "... src/sea.i"
+	@echo "... src/sea.s"
 	@echo "... src/shapes.o"
 	@echo "... src/shapes.i"
 	@echo "... src/shapes.s"

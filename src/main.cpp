@@ -1,6 +1,7 @@
 #include "main.h"
 #include "timer.h"
-#include "ball.h"
+#include "jet.h"
+#include "sea.h"
 
 using namespace std;
 
@@ -12,11 +13,15 @@ GLFWwindow *window;
 * Customizable functions *
 **************************/
 
-Ball ball1;
+Jet jet;
 
-float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
+float screen_zoom = 0.2, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle = 0;
-float eyepos_x=8,eyepos_y=7,eyepos_z=10;
+
+vector<Sea> seaTiles;
+
+glm::vec3 eye = glm::vec3(0,0,18);
+glm::vec3 target;
 
 Timer t60(1.0 / 60);
 
@@ -32,9 +37,9 @@ void draw() {
 
     // Eye - Location of camera. Don't change unless you are sure!!
     // glm::vec3 eye ( 5*cos(camera_rotation_angle*M_PI/180.0f), 0, 5*sin(camera_rotation_angle*M_PI/180.0f) );
-    glm::vec3 eye ( eyepos_x, eyepos_y, eyepos_z);
+    // glm::vec3 eye ( eyepos_x, eyepos_y, eyepos_z);
     // Target - Where is the camera looking at.  Don't change unless you are sure!!
-    glm::vec3 target (0, 0, 0);
+    // glm::vec3 target (targetpos_x, targetpos_y, targetpos_z);
     // Up - Up vector defines tilt of camera.  Don't change unless you are sure!!
     glm::vec3 up (0, 1, 0);
 
@@ -53,7 +58,11 @@ void draw() {
     glm::mat4 MVP;  // MVP = Projection * View * Model
 
     // Scene render
-    ball1.draw(VP);
+    jet.draw(VP);
+    for(int i=0;i<seaTiles.size();++i)
+    {
+        seaTiles[i].draw(VP);
+    }
 }
 
 void tick_input(GLFWwindow *window) {
@@ -63,35 +72,45 @@ void tick_input(GLFWwindow *window) {
     int down = glfwGetKey(window, GLFW_KEY_DOWN);
     int a = glfwGetKey(window, GLFW_KEY_A);
     int d = glfwGetKey(window, GLFW_KEY_D);
+    int z = glfwGetKey(window, GLFW_KEY_Z);
 
     if (left) {
-        ball1.yawLeft();
+        jet.yawLeft();
     }
     if(right)
     {
-        ball1.yawRight();
+        jet.yawRight();
     }
     if(up)
     {
-        ball1.pitchUp();
+        jet.pitchUp();
     }
     if(down)
     {
-        ball1.pitchDown();
+        jet.pitchDown();
     }
     if(a)
     {
-        ball1.rollACC();
+        jet.rollACC();
     }
     if(d)
     {
-        ball1.rollCC();
+        jet.rollCC();
+    }
+
+    if(z) 
+    {
+        // eyepos_x = jet.position.x;
+        // eyepos_y = jet.position.y-20;
+        // eyepos_z = jet.position.z;
     }
 }
 
 void tick_elements() {
-    ball1.tick();
+    jet.tick();
     camera_rotation_angle += 1;
+    // eye = jet.position + jet.zLocal*10.0f + jet.yLocal*10.0f;
+    target = jet.position;
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -100,7 +119,17 @@ void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
 
-    ball1       = Ball(0, 0, COLOR_RED);
+    jet       = Jet(0, 0, COLOR_RED);
+    // eye = jet.position-jet.zLocal;
+    target = jet.position;
+
+    for(int i=-10;i<10;++i)
+    {
+        for(int j=-10;j<10;++j)
+        {
+            seaTiles.push_back(Sea(i*100.0, -1.0, j* -100.0,COLOR_BACKGROUND));
+        }
+    }
 
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
