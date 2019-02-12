@@ -17,6 +17,7 @@ Jet jet;
 
 float screen_zoom = 0.2, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle1 = 0;
+float helicopZoom = 0;
 // float camera_rotation_angle2 = 0;
 
 bool mouseDown = false;
@@ -81,6 +82,8 @@ void tick_input(GLFWwindow *window) {
     int down = glfwGetKey(window, GLFW_KEY_DOWN);
     int a = glfwGetKey(window, GLFW_KEY_A);
     int d = glfwGetKey(window, GLFW_KEY_D);
+    int f = glfwGetKey(window, GLFW_KEY_F);
+    int g = glfwGetKey(window, GLFW_KEY_G);
 
     int followCamView           = glfwGetKey(window, GLFW_KEY_Z);
     int towerView               = glfwGetKey(window, GLFW_KEY_X);
@@ -120,12 +123,8 @@ void tick_input(GLFWwindow *window) {
 	    cameraRotationVector1 = glm::vec3(rotate * glm::vec4(cameraRotationVector1,0.0));
         eye = jet.position + cameraRotationVector1;
         target = jet.position;
-
-        /*
-         * For scroll and zoom just move the camera towards and away from the target 
-         * Do this by taking target - eye and adding the translating scale for the camera, that is
-         * move the camera either nearer of farther away from the plane
-         */
+        glm::vec3 zDir = target - eye
+        eye = eye + helicopZoom * glm::normalize(zDir);
     }
     else if(towerView)
     {
@@ -176,6 +175,7 @@ void tick_elements() {
     {
         glfwGetCursorPos(window, &mouseXPosOld, &mouseYPosOld);
     }
+    cout<<"HELIPCOP OOM : "<<helicopZoom<<endl;
 }
 
 /* Initialize the OpenGL rendering properties */
