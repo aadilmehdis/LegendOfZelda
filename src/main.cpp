@@ -120,6 +120,12 @@ void tick_input(GLFWwindow *window) {
 	    cameraRotationVector1 = glm::vec3(rotate * glm::vec4(cameraRotationVector1,0.0));
         eye = jet.position + cameraRotationVector1;
         target = jet.position;
+
+        /*
+         * For scroll and zoom just move the camera towards and away from the target 
+         * Do this by taking target - eye and adding the translating scale for the camera, that is
+         * move the camera either nearer of farther away from the plane
+         */
     }
     else if(towerView)
     {
