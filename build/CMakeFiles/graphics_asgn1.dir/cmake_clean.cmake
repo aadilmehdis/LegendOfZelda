@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/graphics_asgn1.dir/src/bomb.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/canon.cpp.o"
+  "CMakeFiles/graphics_asgn1.dir/src/checkpoint.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/color.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/compass.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/input.cpp.o"

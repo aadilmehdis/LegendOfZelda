@@ -6,6 +6,9 @@
 #include "bomb.h"
 #include "compass.h"
 #include "ssd.h"
+#include "canon.h"
+#include "checkpoint.h"
+#include "volcano.h"
 
 using namespace std;
 
@@ -26,6 +29,10 @@ std::vector<Bomb> bombs;
 std::vector<SSD> speed;
 std::vector<SSD> altitude;
 std::vector<SSD> fuel;
+std::vector<Canon> canons;
+std::vector<CheckPoint> checkpoints;
+std::vector<Volcano> volcanos;
+
 long long int game_timer = 0;
 
 int missile_timer = 10;
@@ -128,6 +135,18 @@ void draw() {
     {
         fuel[i].draw(VP2);
     }
+    for(int i=0;i<checkpoints.size();++i)
+    {
+        checkpoints[i].draw(VP);
+    }
+    for(int i=0;i<canons.size();++i)
+    {
+        canons[i].draw(VP);
+    }
+    for(int i=0;i<volcanos.size();++i)
+    {
+        volcanos[i].draw(VP);
+    }
 }
 
 void tick_input(GLFWwindow *window) {
@@ -176,7 +195,6 @@ void tick_input(GLFWwindow *window) {
                 camera_rotation_angle1 += 2;
             }
         }
-        cout<<"Cam Rot Angl : "<<camera_rotation_angle1<<"\n";
         glm::mat4 rotate = glm::rotate((float) (camera_rotation_angle1 * M_PI / 180.0f), glm::vec3(0,-1,0));
 	    cameraRotationVector1 = glm::vec3(rotate * glm::vec4(cameraRotationVector1,0.0));
         eye = jet.position + cameraRotationVector1;
@@ -245,6 +263,15 @@ void tick_elements() {
     {
         bombs[i].tick();
     }
+    for(int i=0;i<canons.size();++i)
+    {
+        // tick to change the orientation of the canon
+        canons[i].tick();
+    }
+    for(int i=0;i<volcanos.size();++i)
+    {
+        volcanos[i].tick();
+    }
     mousetimer++;
     
     if(mousetimer%3==0)
@@ -256,7 +283,6 @@ void tick_elements() {
     set_ssd(floor(jet.position.y), speed);
     set_ssd(floor(jet.position.y), fuel);
 
-    cout<<"HELIPCOP OOM : "<<helicopZoom<<endl;
 }
 
 /* Initialize the OpenGL rendering properties */
@@ -268,6 +294,15 @@ void initGL(GLFWwindow *window, int width, int height) {
     jet       = Jet(0, 0, COLOR_RED);
 
     compass     = Compass(glm::vec3(-100,-97, -50 ));
+
+    checkpoints.push_back(CheckPoint(glm::vec3(0,0,-10)));
+    canons.push_back(Canon(glm::vec3(0,0,-10)));
+
+    // define the positions of the canons and checkpoints here 
+    // also define the position of the volcanos
+    // define the positions of the rings
+    // define the positions of the fuel up
+    // the initial position of the checkpoint arrow should be here
 
     for(int i=0;i<5;++i)
     {
@@ -335,8 +370,6 @@ int main(int argc, char **argv) {
             tick_input(window);
             update_timers();
 
-
-            // cout<<eyepos_x<<" "<<eyepos_y<<" "<<eyepos_z<<"\n";
         }
 
         // Poll for Keyboard and mouse events
@@ -368,12 +401,10 @@ void mouseButtonCallBack(GLFWwindow *window, int button, int action, int mods) {
         if(GLFW_PRESS == action)
         {
             mouseDown = true;
-            cout<<"Down\n";
         }
         else 
         {
             mouseDown = false;
-            cout<<"Up\n";
         }
     }
 }
