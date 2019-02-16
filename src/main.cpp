@@ -5,6 +5,7 @@
 #include "missile.h"
 #include "bomb.h"
 #include "compass.h"
+#include "ssd.h"
 
 using namespace std;
 
@@ -22,6 +23,9 @@ Missile missile;
 
 std::vector<Missile> missiles;
 std::vector<Bomb> bombs;
+std::vector<SSD> speed;
+std::vector<SSD> altitude;
+std::vector<SSD> fuel;
 long long int game_timer = 0;
 
 int missile_timer = 10;
@@ -32,6 +36,7 @@ int bomb_timer = 10;
 void spawn_missile();
 void spawn_bombs();
 void update_timers();
+void set_ssd(int number, vector<SSD> &ssd);
 //
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
@@ -106,6 +111,22 @@ void draw() {
     for(int i=0 ;i<bombs.size();++i)
     {
         bombs[i].draw(VP);
+    }
+    for(int i=0;i<speed.size();++i)
+    {
+        speed[i].draw(VP2);
+    }
+    for(int i=0; i<altitude.size();++i)
+    {
+        altitude[i].draw(VP2);
+    }
+    for(int i=0; i<speed.size();++i)
+    {
+        speed[i].draw(VP2);
+    }
+    for(int i=0; i<fuel.size();++i)
+    {
+        fuel[i].draw(VP2);
     }
 }
 
@@ -230,6 +251,11 @@ void tick_elements() {
     {
         glfwGetCursorPos(window, &mouseXPosOld, &mouseYPosOld);
     }
+
+    set_ssd(floor(jet.position.y), altitude);
+    set_ssd(floor(jet.position.y), speed);
+    set_ssd(floor(jet.position.y), fuel);
+
     cout<<"HELIPCOP OOM : "<<helicopZoom<<endl;
 }
 
@@ -242,6 +268,13 @@ void initGL(GLFWwindow *window, int width, int height) {
     jet       = Jet(0, 0, COLOR_RED);
 
     compass     = Compass(glm::vec3(-100,-97, -50 ));
+
+    for(int i=0;i<5;++i)
+    {
+        altitude.push_back(SSD(-98+i*0.2,-97, COLOR_BLACK));  
+        speed.push_back(SSD(-103+i*0.2,-97, COLOR_BLACK));           
+        fuel.push_back(SSD(-100.5+i*0.2,-97.8, COLOR_BLACK));           
+    }
 
     eye = jet.position + jet.zLocal*30.0f + jet.yLocal*10.0f;
 
@@ -369,4 +402,26 @@ void spawn_bombs()
 void update_timers()
 {
     game_timer++;
+}
+
+void set_ssd(int number, vector<SSD> &ssd) {
+    int score_dig[]={0,0,0,0,0};
+    int score = abs(number);
+    int i=0,j=0;
+    while(score != 0)
+    {
+        score_dig[i] = score%10;
+        score /= 10;
+        i++;
+    }
+    i=4;
+    while(score_dig[i]!=0)
+    {
+        --i;
+    }
+    while(i>=0)
+    {
+        ssd[j].set_digit(score_dig[i]);
+        --i;++j;
+    }
 }
