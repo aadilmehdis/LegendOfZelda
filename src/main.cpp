@@ -4,6 +4,7 @@
 #include "sea.h"
 #include "missile.h"
 #include "bomb.h"
+#include "compass.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ GLFWwindow *window;
 **************************/
 
 Jet jet;
-Jet jet2;
+Compass compass;
 Missile missile;
 
 std::vector<Missile> missiles;
@@ -93,7 +94,7 @@ void draw() {
 
     // Scene render
     jet.draw(VP);
-    jet2.draw(VP2);
+    compass.draw(VP2);
     for(int i=0;i<seaTiles.size();++i)
     {
         seaTiles[i].draw(VP);
@@ -177,10 +178,13 @@ void tick_input(GLFWwindow *window) {
 
     if (left) {
         jet.yawLeft();
+        compass.rotation += compass.rotation_speed;
     }
     if(right)
     {
         jet.yawRight();
+        compass.rotation -= compass.rotation_speed;
+
     }
     if(upk)
     {
@@ -236,7 +240,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     // Create the models
 
     jet       = Jet(0, 0, COLOR_RED);
-    jet2       = Jet(-100, -100, COLOR_RED);
+
+    compass     = Compass(glm::vec3(-100,-97, -50 ));
+
     eye = jet.position + jet.zLocal*30.0f + jet.yLocal*10.0f;
 
     target = jet.position;
