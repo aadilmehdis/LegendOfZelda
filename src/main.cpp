@@ -323,6 +323,14 @@ void initGL(GLFWwindow *window, int width, int height) {
         }
     }
 
+    for(int i=-5 ; i<5 ; ++i)
+    {
+        for(int j=-5; j<5;++j)
+        {
+            volcanos.push_back(Volcano(glm::vec3(150*i,-11,-150*j)));
+        }
+    }
+
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
     // Get a handle for our "MVP" uniform

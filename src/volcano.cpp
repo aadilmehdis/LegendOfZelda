@@ -2,8 +2,9 @@
 #include "main.h"
 #include "shapes.h"
 
-Volcano::Volcano(float x, float y, float z) {
-    this->position = glm::vec3(x, -11, 0);
+Volcano::Volcano(glm::vec3 origin) {
+    // this->position = glm::vec3(x, -11, 0);
+    this->position = origin;
     this->rotation = 0;
     speed = 1;
 
