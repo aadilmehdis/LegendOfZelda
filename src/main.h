@@ -54,8 +54,10 @@ typedef struct VAO VAO;
 
 struct GLMatrices {
     glm::mat4 projection;
+    glm::mat4 projection2;
     glm::mat4 model;
     glm::mat4 view;
+    glm::mat4 view2;
     GLuint    MatrixID;
 };
 
@@ -83,5 +85,8 @@ extern const color_t COLOR_RED;
 extern const color_t COLOR_GREEN;
 extern const color_t COLOR_BLACK;
 extern const color_t COLOR_BACKGROUND;
+extern const color_t COLOR_DARK_BROWN;
+extern const color_t COLOR_BROWN;
+extern const color_t COLOR_LAVA;
 
 #endif

@@ -11,15 +11,14 @@ public:
     glm::vec3 position;
     float rotation;
     void draw(glm::mat4 VP);
-    void set_position(float x, float y);
-    std::vector<GLfloat> computeVertices(float radius);
-    std::vector<GLfloat> icosa();
     void tick();
     double speed;
 
     glm::vec3 xLocal;
     glm::vec3 yLocal;
     glm::vec3 zLocal;
+    glm::vec3 velocity;
+    float acceleration;
 
     void yawLeft();
     void yawRight();

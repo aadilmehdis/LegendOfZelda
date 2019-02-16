@@ -2,6 +2,8 @@
 #include "timer.h"
 #include "jet.h"
 #include "sea.h"
+#include "missile.h"
+#include "bomb.h"
 
 using namespace std;
 
@@ -14,8 +16,24 @@ GLFWwindow *window;
 **************************/
 
 Jet jet;
+Jet jet2;
+Missile missile;
 
-float screen_zoom = 0.2, screen_center_x = 0, screen_center_y = 0;
+std::vector<Missile> missiles;
+std::vector<Bomb> bombs;
+long long int game_timer = 0;
+
+int missile_timer = 10;
+int bomb_timer = 10;
+
+
+// spawn functions
+void spawn_missile();
+void spawn_bombs();
+void update_timers();
+//
+
+float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle1 = 0;
 float helicopZoom = 0;
 // float camera_rotation_angle2 = 0;
@@ -30,6 +48,10 @@ vector<Sea> seaTiles;
 glm::vec3 eye = glm::vec3(0,0,18);
 glm::vec3 target;
 glm::vec3 up;
+
+glm::vec3 eye2 = glm::vec3(-100, -100, 0);
+glm::vec3 target2 = glm::vec3(-100, -100, -100);;
+glm::vec3 up2 = glm::vec3(0,1,0);
 
 double mouseXPos, mouseYPos, mouseXPosOld, mouseYPosOld;
 
@@ -55,12 +77,14 @@ void draw() {
 
     // Compute Camera matrix (view)
     Matrices.view = glm::lookAt( eye, target, up ); // Rotating Camera for 3D
+    Matrices.view2 = glm::lookAt( eye2, target2, up2 ); // Rotating Camera for 3D
     // Don't change unless you are sure!!
     // Matrices.view = glm::lookAt(glm::vec3(0, 0, 3), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0)); // Fixed camera for 2D (ortho) in XY plane
 
     // Compute ViewProject matrix as view/camera might not be changed for this frame (basic scenario)
     // Don't change unless you are sure!!
     glm::mat4 VP = Matrices.projection * Matrices.view;
+    glm::mat4 VP2 = Matrices.projection2 * Matrices.view2;
 
     // Send our transformation to the currently bound shader, in the "MVP" uniform
     // For each model you render, since the MVP will be different (at least the M part)
@@ -69,9 +93,18 @@ void draw() {
 
     // Scene render
     jet.draw(VP);
+    jet2.draw(VP2);
     for(int i=0;i<seaTiles.size();++i)
     {
         seaTiles[i].draw(VP);
+    }
+    for(int i=0 ;i<missiles.size();++i)
+    {
+        missiles[i].draw(VP);
+    }
+    for(int i=0 ;i<bombs.size();++i)
+    {
+        bombs[i].draw(VP);
     }
 }
 
@@ -84,6 +117,9 @@ void tick_input(GLFWwindow *window) {
     int d = glfwGetKey(window, GLFW_KEY_D);
     int f = glfwGetKey(window, GLFW_KEY_F);
     int g = glfwGetKey(window, GLFW_KEY_G);
+
+    int missile = glfwGetKey(window, GLFW_KEY_M);
+    int bomb = glfwGetKey(window, GLFW_KEY_N);
 
     int followCamView           = glfwGetKey(window, GLFW_KEY_Z);
     int towerView               = glfwGetKey(window, GLFW_KEY_X);
@@ -138,9 +174,6 @@ void tick_input(GLFWwindow *window) {
         up = jet.yLocal;
         target = jet.position;
     }
-    
-
-
 
     if (left) {
         jet.yawLeft();
@@ -165,10 +198,28 @@ void tick_input(GLFWwindow *window) {
     {
         jet.rollCC();
     }
+
+    if(missile && game_timer % missile_timer == 0)
+    {
+        spawn_missile();
+    }
+
+    if(bomb && game_timer % bomb_timer == 0)
+    {
+        spawn_bombs();
+    }
 }
 
 void tick_elements() {
     jet.tick();
+    for(int i=0;i<missiles.size();++i)
+    {
+        missiles[i].tick();
+    }
+    for(int i=0;i<bombs.size();++i)
+    {
+        bombs[i].tick();
+    }
     mousetimer++;
     
     if(mousetimer%3==0)
@@ -185,6 +236,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     // Create the models
 
     jet       = Jet(0, 0, COLOR_RED);
+    jet2       = Jet(-100, -100, COLOR_RED);
     eye = jet.position + jet.zLocal*30.0f + jet.yLocal*10.0f;
 
     target = jet.position;
@@ -242,6 +294,8 @@ int main(int argc, char **argv) {
 
             tick_elements();
             tick_input(window);
+            update_timers();
+
 
             // cout<<eyepos_x<<" "<<eyepos_y<<" "<<eyepos_z<<"\n";
         }
@@ -263,7 +317,8 @@ void reset_screen() {
     float bottom = screen_center_y - 4 / screen_zoom;
     float left   = screen_center_x - 4 / screen_zoom;
     float right  = screen_center_x + 4 / screen_zoom;
-    Matrices.projection = glm::ortho(left, right, bottom, top, 0.1f, 500.0f);
+    // Matrices.projection = glm::ortho(left, right, bottom, top, 0.1f, 500.0f);
+    Matrices.projection2 = glm::ortho(left, right, bottom, top, 0.1f, 500.0f);
 }
 
 
@@ -282,4 +337,30 @@ void mouseButtonCallBack(GLFWwindow *window, int button, int action, int mods) {
             cout<<"Up\n";
         }
     }
+}
+
+void spawn_missile() 
+{
+    glm::mat4 rotate;
+	rotate[0] = glm::vec4(jet.xLocal,0);
+	rotate[1] = glm::vec4(jet.yLocal,0);
+	rotate[2] = glm::vec4(jet.zLocal,0);
+	rotate[3] = glm::vec4(0,0,0,1);
+    missiles.push_back(Missile(jet.position, jet.zLocal, rotate));
+}
+
+
+void spawn_bombs() 
+{
+    glm::mat4 rotate;
+	rotate[0] = glm::vec4(jet.xLocal,0);
+	rotate[1] = glm::vec4(jet.yLocal,0);
+	rotate[2] = glm::vec4(jet.zLocal,0);
+	rotate[3] = glm::vec4(0,0,0,1);
+    bombs.push_back(Bomb(jet.position, jet.velocity, rotate));
+}
+
+void update_timers()
+{
+    game_timer++;
 }

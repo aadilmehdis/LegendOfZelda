@@ -7,6 +7,8 @@ Jet::Jet(float x, float y, color_t color) {
 	this->xLocal = glm::vec3(1, 0, 0);
 	this->yLocal = glm::vec3(0, 1, 0);
 	this->zLocal = glm::vec3(0, 0, 1);
+	this->velocity = this->zLocal;
+	this->acceleration = 0.01f;
 
     this->rotation = 0;
     speed = 1;
@@ -100,6 +102,11 @@ Jet::Jet(float x, float y, color_t color) {
 	vertex_buffer.push_back(-6 + z_pullBack);
 	//fin close
 
+	// for(int i=0;i<vertex_buffer.size();++i)
+	// {
+	// 	vertex_buffer[i] *= 10;
+	// }
+
 
 
     this->object = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), color, GL_LINE);
@@ -124,19 +131,15 @@ void Jet::draw(glm::mat4 VP) {
     draw3DObject(this->object);
 }
 
-void Jet::set_position(float x, float y) {
-    this->position = glm::vec3(x, y, 0);
-}
 
 void Jet::tick() {
-    // this->rotation += speed;
-    // this->position.x -= speed;
-    // this->position.y -= speed;
+	this->velocity = this->zLocal * this->acceleration;
 	this->position -= this->zLocal * 0.1f;
+	// this->position -= glm::vec3(0,0.1,0);
 }
 
 void Jet::yawLeft() {
-	glm::mat4 rotate    = glm::rotate((float) (-1.0 * M_PI / 180.0f), yLocal);
+	glm::mat4 rotate    		= glm::rotate((float) (-1.0 * M_PI / 180.0f), yLocal);
 	this->xLocal 				= glm::vec3(rotate * glm::vec4(xLocal,0.0));
 	this->zLocal 				= glm::vec3(rotate * glm::vec4(zLocal,0.0));
 	// this->xLocal 				= glm::vec3(rotate[0]);
