@@ -9,6 +9,7 @@
 #include "canon.h"
 #include "checkpoint.h"
 #include "volcano.h"
+#include "canonball.h"
 
 using namespace std;
 
@@ -32,6 +33,7 @@ std::vector<SSD> fuel;
 std::vector<Canon> canons;
 std::vector<CheckPoint> checkpoints;
 std::vector<Volcano> volcanos;
+std::vector<CanonBall> canonballs;
 
 long long int game_timer = 0;
 
@@ -42,19 +44,21 @@ int bomb_timer = 10;
 // spawn functions
 void spawn_missile();
 void spawn_bombs();
+void spawn_canonballs();
 void update_timers();
 void set_ssd(int number, vector<SSD> &ssd);
 //
 
 float screen_zoom = 1, screen_center_x = 0, screen_center_y = 0;
 float camera_rotation_angle1 = 0;
+float camera_rotation_angle2 = 0;
 float helicopZoom = 0;
-// float camera_rotation_angle2 = 0;
+
 
 bool mouseDown = false;
 int mousetimer = 0;
 glm::vec3 cameraRotationVector1 = glm::vec3(20,0,0);
-glm::vec3 cameraRotationVector2 = glm::vec3(20,0,0);
+glm::vec3 cameraRotationVector2 = glm::vec3(0,20,0);
 
 vector<Sea> seaTiles;
 
@@ -147,6 +151,10 @@ void draw() {
     {
         volcanos[i].draw(VP);
     }
+    for(int i=0;i<canonballs.size();++i)
+    {
+        canonballs[i].draw(VP);
+    }
 }
 
 void tick_input(GLFWwindow *window) {
@@ -183,6 +191,7 @@ void tick_input(GLFWwindow *window) {
     else if(helicopterView)
     {
         camera_rotation_angle1 = 0;
+        camera_rotation_angle2 = 0;
         if(mouseDown == true)
         {
             glfwGetCursorPos(window, &mouseXPos, &mouseYPos);
@@ -194,10 +203,23 @@ void tick_input(GLFWwindow *window) {
             {
                 camera_rotation_angle1 += 2;
             }
+            if(mouseYPos  > mouseYPosOld)
+            {
+                camera_rotation_angle2 -= 2;
+            }
+            else if(mouseYPos  < mouseYPosOld)
+            {
+                camera_rotation_angle2 += 2;
+            }
         }
         glm::mat4 rotate = glm::rotate((float) (camera_rotation_angle1 * M_PI / 180.0f), glm::vec3(0,-1,0));
 	    cameraRotationVector1 = glm::vec3(rotate * glm::vec4(cameraRotationVector1,0.0));
-        eye = jet.position + cameraRotationVector1;
+
+
+        glm::mat4 rotate2 = glm::rotate((float) (camera_rotation_angle2 * M_PI / 180.0f), glm::vec3(1,0,0));
+	    cameraRotationVector2 = glm::vec3(rotate2 * glm::vec4(cameraRotationVector2,0.0));
+
+        eye = jet.position + cameraRotationVector1 + cameraRotationVector2;
         target = jet.position;
         glm::vec3 zDir = target - eye;
         eye = eye + helicopZoom * glm::normalize(zDir);
@@ -265,19 +287,24 @@ void tick_elements() {
     }
     for(int i=0;i<canons.size();++i)
     {
-        // tick to change the orientation of the canon
-        canons[i].tick();
+        canons[i].tick(jet.position);
     }
     for(int i=0;i<volcanos.size();++i)
     {
         volcanos[i].tick();
     }
+    for(int i=0;i<canonballs.size();++i)
+    {
+        canonballs[i].tick();
+    }
+
     mousetimer++;
     
     if(mousetimer%3==0)
     {
         glfwGetCursorPos(window, &mouseXPosOld, &mouseYPosOld);
     }
+    
 
     set_ssd(floor(jet.position.y), altitude);
     set_ssd(floor(jet.position.y), speed);
@@ -291,12 +318,9 @@ void initGL(GLFWwindow *window, int width, int height) {
     /* Objects should be created before any other gl function and shaders */
     // Create the models
 
-    jet       = Jet(0, 0, COLOR_RED);
+    jet       = Jet(75, 25, COLOR_RED);
 
     compass     = Compass(glm::vec3(-100,-97, -50 ));
-
-    checkpoints.push_back(CheckPoint(glm::vec3(0,0,-10)));
-    canons.push_back(Canon(glm::vec3(0,0,-10)));
 
     // define the positions of the canons and checkpoints here 
     // also define the position of the volcanos
@@ -317,17 +341,33 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     for(int i=-10;i<10;++i)
     {
-        for(int j=-10;j<10;++j)
+        for(int j=-10;j<50;++j)
         {
             seaTiles.push_back(Sea(i*100.0, -1.0, j* -100.0,COLOR_BACKGROUND));
         }
     }
 
+    checkpoints.push_back(glm::vec3(200,0,-330));
+    canons.push_back(Canon(glm::vec3(200,0,-330)));
+
+    checkpoints.push_back(glm::vec3(-330,0,-660));
+    canons.push_back(Canon(glm::vec3(-330,0,-660)));
+
+    checkpoints.push_back(glm::vec3(100,0,-990));
+    canons.push_back(Canon(glm::vec3(100,0,-990)));
+
+    checkpoints.push_back(glm::vec3(-430,0,-1220));
+    canons.push_back(Canon(glm::vec3(-430,0,-1220)));
+
+    checkpoints.push_back(glm::vec3(0,0,-1550));
+    canons.push_back(Canon(glm::vec3(0,0,-1550)));
+
     for(int i=-5 ; i<5 ; ++i)
     {
-        for(int j=-5; j<5;++j)
+        for(int j=-5; j<25;++j)
         {
-            volcanos.push_back(Volcano(glm::vec3(150*i,-11,-150*j)));
+            // if(rand()%2 == 0)
+                volcanos.push_back(Volcano(glm::vec3(150*i,-11,-150*j)));
         }
     }
 
@@ -373,6 +413,8 @@ int main(int argc, char **argv) {
             draw();
             // Swap Frame Buffer in double buffering
             glfwSwapBuffers(window);
+
+            // spawn_canonballs();
 
             tick_elements();
             tick_input(window);
@@ -436,6 +478,19 @@ void spawn_bombs()
 	rotate[2] = glm::vec4(jet.zLocal,0);
 	rotate[3] = glm::vec4(0,0,0,1);
     bombs.push_back(Bomb(jet.position, jet.velocity, rotate));
+}
+
+void spawn_canonballs()
+{
+    for(int i=0;i<canons.size();++i)
+    {
+        if(abs(glm::distance(jet.position,canons[i].position)) < 300)
+        if(game_timer%10==0)
+        {
+            glm::vec3 predicted_jet_pos = jet.position + glm::vec3(0,0,-50);
+            canonballs.push_back(CanonBall(canons[i].position, predicted_jet_pos));
+        }
+    }
 }
 
 void update_timers()

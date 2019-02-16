@@ -34,7 +34,7 @@ Sea::Sea(float x, float y, float z, color_t color) {
     vertex_buffer.push_back(height);
     vertex_buffer.push_back(-100.0f);
 
-    this->object = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_BLACK, GL_LINE);
+    this->object = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_OCEAN, GL_FILL);
 }
 
 void Sea::draw(glm::mat4 VP) {

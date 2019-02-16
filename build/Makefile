@@ -652,6 +652,33 @@ src/canon.cpp.s:
 	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/canon.cpp.s
 .PHONY : src/canon.cpp.s
 
+src/canonball.o: src/canonball.cpp.o
+
+.PHONY : src/canonball.o
+
+# target to build an object file
+src/canonball.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/canonball.cpp.o
+.PHONY : src/canonball.cpp.o
+
+src/canonball.i: src/canonball.cpp.i
+
+.PHONY : src/canonball.i
+
+# target to preprocess a source file
+src/canonball.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/canonball.cpp.i
+.PHONY : src/canonball.cpp.i
+
+src/canonball.s: src/canonball.cpp.s
+
+.PHONY : src/canonball.s
+
+# target to generate assembly for a file
+src/canonball.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/canonball.cpp.s
+.PHONY : src/canonball.cpp.s
+
 src/checkpoint.o: src/checkpoint.cpp.o
 
 .PHONY : src/checkpoint.o
@@ -1082,6 +1109,9 @@ help:
 	@echo "... src/canon.o"
 	@echo "... src/canon.i"
 	@echo "... src/canon.s"
+	@echo "... src/canonball.o"
+	@echo "... src/canonball.i"
+	@echo "... src/canonball.s"
 	@echo "... src/checkpoint.o"
 	@echo "... src/checkpoint.i"
 	@echo "... src/checkpoint.s"

@@ -9,8 +9,9 @@ public:
     Canon() {}
     Canon(glm::vec3 origin);
     glm::vec3 position;
+    glm::mat4 rotate;
     void draw(glm::mat4 VP);
-    void tick();
+    void tick(glm::vec3 plane_pos);
 
 private:
     VAO *object1;
