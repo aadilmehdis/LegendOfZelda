@@ -10,6 +10,7 @@
 #include "checkpoint.h"
 #include "volcano.h"
 #include "canonball.h"
+#include "arrow.h"
 
 using namespace std;
 
@@ -34,6 +35,7 @@ std::vector<Canon> canons;
 std::vector<CheckPoint> checkpoints;
 std::vector<Volcano> volcanos;
 std::vector<CanonBall> canonballs;
+std::vector<Arrow> arrows;
 
 long long int game_timer = 0;
 
@@ -154,6 +156,10 @@ void draw() {
     for(int i=0;i<canonballs.size();++i)
     {
         canonballs[i].draw(VP);
+    }
+    for(int i=0;i<arrows.size();++i)
+    {
+        arrows[i].draw(VP);
     }
 }
 
@@ -297,6 +303,10 @@ void tick_elements() {
     {
         canonballs[i].tick();
     }
+    for(int i=0;i<arrows.size();++i)
+    {
+        arrows[i].tick();
+    }
 
     mousetimer++;
     
@@ -349,18 +359,24 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     checkpoints.push_back(glm::vec3(200,0,-330));
     canons.push_back(Canon(glm::vec3(200,0,-330)));
+    arrows.push_back(Arrow(glm::vec3(200,30,-330)));
 
     checkpoints.push_back(glm::vec3(-330,0,-660));
     canons.push_back(Canon(glm::vec3(-330,0,-660)));
+    arrows.push_back(Arrow(glm::vec3(-330,30,-660)));
+
 
     checkpoints.push_back(glm::vec3(100,0,-990));
     canons.push_back(Canon(glm::vec3(100,0,-990)));
+    arrows.push_back(Arrow(glm::vec3(100,30,-990)));
 
     checkpoints.push_back(glm::vec3(-430,0,-1220));
     canons.push_back(Canon(glm::vec3(-430,0,-1220)));
+    arrows.push_back(Arrow(glm::vec3(-430,30,-1220)));
 
     checkpoints.push_back(glm::vec3(0,0,-1550));
     canons.push_back(Canon(glm::vec3(0,0,-1550)));
+    arrows.push_back(Arrow(glm::vec3(0,30,-1550)));
 
     for(int i=-5 ; i<5 ; ++i)
     {
@@ -414,7 +430,7 @@ int main(int argc, char **argv) {
             // Swap Frame Buffer in double buffering
             glfwSwapBuffers(window);
 
-            // spawn_canonballs();
+            spawn_canonballs();
 
             tick_elements();
             tick_input(window);
@@ -484,11 +500,21 @@ void spawn_canonballs()
 {
     for(int i=0;i<canons.size();++i)
     {
-        if(abs(glm::distance(jet.position,canons[i].position)) < 300)
-        if(game_timer%10==0)
+        if(glm::distance(jet.position,canons[i].position) < 300)
         {
-            glm::vec3 predicted_jet_pos = jet.position + glm::vec3(0,0,-50);
-            canonballs.push_back(CanonBall(canons[i].position, predicted_jet_pos));
+            if(game_timer%50==0)
+            {
+                glm::vec3 predicted_jet_pos;
+                // if(canons[i].position.z < jet.position.z)
+                // {
+                    predicted_jet_pos = jet.position - jet.velocity * 60.0f;
+                // }
+                // else 
+                // {
+                    // predicted_jet_pos = jet.position + jet.velocity * 120.0f;
+                // }
+                canonballs.push_back(CanonBall(canons[i].position, predicted_jet_pos));
+            }
         }
     }
 }

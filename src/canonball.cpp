@@ -14,7 +14,7 @@ CanonBall::CanonBall(glm::vec3 origin, glm::vec3 target) {
     this->rotate[0] = glm::vec4(r1,0);
     this->rotate[3] = glm::vec4(0,0,0,1);
 
-    this->velocity = dir*2.0f;
+    this->velocity = glm::normalize(dir)*2.5f;
 
 	float z_pullBack = 0;
 	float y_pullBack = 0;

@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/graphics_asgn1.dir/src/arrow.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/bomb.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/canon.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/canonball.cpp.o"

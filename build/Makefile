@@ -598,6 +598,33 @@ LinearMath/fast:
 	$(MAKE) -f external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build.make external/bullet-2.81-rev2613/src/LinearMath/CMakeFiles/LinearMath.dir/build
 .PHONY : LinearMath/fast
 
+src/arrow.o: src/arrow.cpp.o
+
+.PHONY : src/arrow.o
+
+# target to build an object file
+src/arrow.cpp.o:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/arrow.cpp.o
+.PHONY : src/arrow.cpp.o
+
+src/arrow.i: src/arrow.cpp.i
+
+.PHONY : src/arrow.i
+
+# target to preprocess a source file
+src/arrow.cpp.i:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/arrow.cpp.i
+.PHONY : src/arrow.cpp.i
+
+src/arrow.s: src/arrow.cpp.s
+
+.PHONY : src/arrow.s
+
+# target to generate assembly for a file
+src/arrow.cpp.s:
+	$(MAKE) -f CMakeFiles/graphics_asgn1.dir/build.make CMakeFiles/graphics_asgn1.dir/src/arrow.cpp.s
+.PHONY : src/arrow.cpp.s
+
 src/bomb.o: src/bomb.cpp.o
 
 .PHONY : src/bomb.o
@@ -1103,6 +1130,9 @@ help:
 	@echo "... BulletCollision"
 	@echo "... BulletDynamics"
 	@echo "... LinearMath"
+	@echo "... src/arrow.o"
+	@echo "... src/arrow.i"
+	@echo "... src/arrow.s"
 	@echo "... src/bomb.o"
 	@echo "... src/bomb.i"
 	@echo "... src/bomb.s"

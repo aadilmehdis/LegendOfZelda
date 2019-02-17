@@ -8,7 +8,7 @@ Jet::Jet(float x, float y, color_t color) {
 	this->yLocal = glm::vec3(0, 1, 0);
 	this->zLocal = glm::vec3(0, 0, 1);
 	this->velocity = this->zLocal;
-	this->acceleration = 0.01f;
+	this->acceleration = 0.5f;
 
     this->rotation = 0;
     speed = 1;
@@ -133,8 +133,8 @@ void Jet::draw(glm::mat4 VP) {
 
 
 void Jet::tick() {
-	this->velocity = this->zLocal * this->acceleration;
-	this->position -= this->zLocal * 0.5f;
+	this->velocity = glm::normalize(this->zLocal) * this->acceleration;
+	this->position -= this->velocity;
 	// this->position -= glm::vec3(0,0.1,0);
 }
 
