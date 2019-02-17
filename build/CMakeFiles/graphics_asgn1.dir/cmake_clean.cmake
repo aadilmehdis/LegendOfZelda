@@ -13,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/graphics_asgn1.dir/src/missile.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/nonedit.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/other_handlers.cpp.o"
+  "CMakeFiles/graphics_asgn1.dir/src/parachute.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/ring.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/sea.cpp.o"
   "CMakeFiles/graphics_asgn1.dir/src/shapes.cpp.o"

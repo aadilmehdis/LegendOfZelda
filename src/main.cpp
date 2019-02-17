@@ -13,6 +13,7 @@
 #include "arrow.h"
 #include "ring.h"
 #include "fueltank.h"
+#include "parachute.h"
 
 using namespace std;
 
@@ -40,6 +41,7 @@ std::vector<CanonBall> canonballs;
 std::vector<Arrow> arrows;
 std::vector<Ring> rings;
 std::vector<FuelTank> fueltanks;
+std::vector<Parachute> parachutes;
 
 
 long long int game_timer = 0;
@@ -59,6 +61,7 @@ void spawn_volcanos();
 void update_timers();
 void spawn_rings();
 void spawn_fueltanks();
+void spawn_parachutes();
 void set_ssd(int number, vector<SSD> &ssd);
 //
 
@@ -179,6 +182,10 @@ void draw() {
     for(int i=0;i<fueltanks.size();++i)
     {
         fueltanks[i].draw(VP);
+    }
+    for(int i=0;i<parachutes.size();++i)
+    {
+        parachutes[i].draw(VP);
     }
 }
 
@@ -358,7 +365,10 @@ void tick_elements() {
         {
             cout<<"Not Collied\n";
         }
-        
+    }
+    for(int i=0;i<parachutes.size();++i)
+    {
+        parachutes[i].tick(jet.position);
     }
 
 
@@ -396,6 +406,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     spawn_sea();
     spawn_dashboard();
     spawn_fueltanks();
+    spawn_parachutes();
 
 
     // Create and compile our GLSL program from the shaders
@@ -519,6 +530,11 @@ void spawn_rings()
     rings.push_back(Ring(glm::vec3(430,30,-2300)));
 }
 
+void spawn_parachutes()
+{
+    parachutes.push_back(Parachute(glm::vec3(0,20,-300)));
+}
+
 void spawn_volcanos()
 {
     for(int i=-5 ; i<5 ; ++i)
@@ -592,7 +608,7 @@ void spawn_canonballs()
         {
             if(glm::distance(jet.position,canons[i].position) < 300)
             {
-                if(game_timer%50==0)
+                if(game_timer%100==0)
                 {
                     glm::vec3 predicted_jet_pos;
                     predicted_jet_pos = jet.position - jet.velocity * 60.0f;
