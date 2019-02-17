@@ -5,6 +5,7 @@
 Arrow::Arrow(glm::vec3 origin) {
     this->position = origin;
     this->rotation = 0;
+    this->current = false;
 
 	float z_pullBack = 5;
 
@@ -16,8 +17,6 @@ Arrow::Arrow(glm::vec3 origin) {
     {
         vertex_buffer[i] *= 4;
     }
-
-
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_LINE);
 }
@@ -34,7 +33,10 @@ void Arrow::draw(glm::mat4 VP) {
 
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
-    draw3DObject(this->object1);
+    if(this->current)
+    {
+        draw3DObject(this->object1);
+    }
 }
 
 

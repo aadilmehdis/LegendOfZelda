@@ -203,7 +203,7 @@ void tick_input(GLFWwindow *window) {
 
     if(jetView)
     {
-        eye = jet.position + jet.zLocal * -10.0f;
+        eye = jet.position + jet.zLocal * -10.25f;
         target = jet.position + jet.zLocal * -1000.0f;
         up = jet.yLocal;
     }
@@ -425,9 +425,9 @@ int main(int argc, char **argv) {
     quit(window);
 }
 
-bool detect_collision(bounding_box_t a, bounding_box_t b) {
-    return (abs(a.x - b.x) * 2 < (a.width + b.width)) &&
-           (abs(a.y - b.y) * 2 < (a.height + b.height));
+bool detect_collision(glm::vec3 sphere1, glm::vec3 sphere2, double radius1, double radius2) {
+  double distance = glm::distance(sphere1, sphere2);
+  return distance < (radius1 + radius2);
 }
 
 void reset_screen() {
@@ -505,6 +505,9 @@ void spawn_checkpoints()
     checkpoints.push_back(glm::vec3(200,0,-500));
     canons.push_back(Canon(glm::vec3(200,0,-500)));
     arrows.push_back(Arrow(glm::vec3(200,100,-500)));
+
+    checkpoints[0].current = true;
+    arrows[0].current = true;
 
     checkpoints.push_back(glm::vec3(-330,0,-800));
     canons.push_back(Canon(glm::vec3(-330,0,-800)));

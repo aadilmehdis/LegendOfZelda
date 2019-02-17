@@ -9,6 +9,8 @@ public:
     CheckPoint() {}
     CheckPoint(glm::vec3 origin);
     glm::vec3 position;
+    bool destroyed;
+    bool current;
     void draw(glm::mat4 VP);
     void tick();
 

@@ -31,7 +31,13 @@ public:
 
 
 private:
-    VAO *object;
+    VAO *object1;
+    VAO *object2;
+    VAO *object3;
+    VAO *frame1;
+    // VAO *frame2;
+    // VAO *frame3;
+    VAO *crosshair;
 };
 
 #endif // BALL_H

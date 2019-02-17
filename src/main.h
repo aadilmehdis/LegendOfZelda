@@ -90,5 +90,9 @@ extern const color_t COLOR_BROWN;
 extern const color_t COLOR_LAVA;
 extern const color_t COLOR_OCEAN;
 extern const color_t COLOR_SMOKE;
+extern const color_t COLOR_JET_BODY;
+extern const color_t COLOR_JET_WING;
+extern const color_t COLOR_JET_TAIL;
+extern const color_t COLOR_JET_FRAME;
 
 #endif

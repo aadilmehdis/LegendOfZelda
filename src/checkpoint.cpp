@@ -4,6 +4,8 @@
 
 CheckPoint::CheckPoint(glm::vec3 origin) {
     this->position = origin;
+    this->current = false;
+    this->destroyed = false;
 
 	float z_pullBack = 8.8;
 	float y_pullBack = 0;

@@ -10,6 +10,7 @@ public:
     Arrow(glm::vec3 origin);
     glm::vec3 position;
     double rotation;
+    bool current;
     void draw(glm::mat4 VP);
     void tick();
 
