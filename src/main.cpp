@@ -314,10 +314,86 @@ void tick_elements() {
     for(int i=0;i<missiles.size();++i)
     {
         missiles[i].tick();
+        for(int j=0;j<checkpoints.size();++j)
+        {
+            if(detect_collision(checkpoints[j].position,missiles[i].position,checkpoints[j].radius,missiles[i].radius))
+            {
+                missiles.erase(missiles.begin() + i);
+                if(checkpoints[j].current)
+                {
+                    if(!checkpoints[j].destroyed)
+                    {
+                        checkpoints[j].current = false;
+                        checkpoints[j].destroyed = true;
+                        arrows[j].current = false;
+                        if(j+1 != checkpoints.size())
+                        {
+                            checkpoints[j+1].destroyed = false;
+                            checkpoints[j+1].current = true;
+                            arrows[j+1].current = true;
+                        }
+                    }
+                }
+            }
+        }
+        for(int j=0;j<parachutes.size();++j)
+        {
+            if(detect_collision(parachutes[j].position,missiles[i].position,parachutes[j].radius,missiles[i].radius))
+            {
+                parachutes.erase(parachutes.begin() + j);
+                missiles.erase(missiles.begin() + i);
+            }
+        }
+        for(int j=0;j<canonballs.size();++j)
+        {
+            if(detect_collision(canonballs[j].position,missiles[i].position,canonballs[j].radius,missiles[i].radius))
+            {
+                canonballs.erase(canonballs.begin() + j);
+                missiles.erase(missiles.begin() + i);
+            }
+        }
     }
     for(int i=0;i<bombs.size();++i)
     {
         bombs[i].tick();
+        for(int j=0;j<checkpoints.size();++j)
+        {
+            if(detect_collision(checkpoints[j].position,bombs[i].position,checkpoints[j].radius,bombs[i].radius))
+            {
+                bombs.erase(bombs.begin() + i);
+                if(checkpoints[j].current)
+                {
+                    if(!checkpoints[j].destroyed)
+                    {
+                        checkpoints[j].current = false;
+                        checkpoints[j].destroyed = true;
+                        arrows[j].current = false;
+                        if(j+1 != checkpoints.size())
+                        {
+                            checkpoints[j+1].destroyed = false;
+                            checkpoints[j+1].current = true;
+                            arrows[j+1].current = true;
+                        }
+                    }
+                }
+            }
+        }
+        for(int j=0;j<parachutes.size();++j)
+        {
+            if(detect_collision(parachutes[j].position,bombs[i].position,parachutes[j].radius,bombs[i].radius))
+            {
+                parachutes.erase(parachutes.begin() + j);
+                bombs.erase(bombs.begin() + i);
+            }
+        }
+        for(int j=0;j<canonballs.size();++j)
+        {
+            if(detect_collision(canonballs[j].position,bombs[i].position,canonballs[j].radius,bombs[i].radius))
+            {
+                canonballs.erase(canonballs.begin() + j);
+                bombs.erase(bombs.begin() + i);
+            }
+        }
     }
     for(int i=0;i<canons.size();++i)
     {
@@ -330,6 +406,10 @@ void tick_elements() {
     for(int i=0;i<canonballs.size();++i)
     {
         canonballs[i].tick();
+        if(detect_collision(canonballs[i].position,jet.position,canonballs[i].radius,jet.radius))
+        {
+            canonballs.erase(canonballs.begin() + i);
+        }
     }
     for(int i=0;i<arrows.size();++i)
     {
@@ -338,33 +418,15 @@ void tick_elements() {
     for(int i=0;i<fueltanks.size();++i)
     {
         fueltanks[i].tick();
+        if(detect_collision(fueltanks[i].position,jet.position,fueltanks[i].radius,jet.radius))
+        {
+            fueltanks.erase(fueltanks.begin() + i);
+        }
     }
 
     for(int i=0;i<checkpoints.size();++i)
     {
-        if(detect_collision(checkpoints[i].position, jet.position, checkpoints[i].radius, jet.radius))
-        {
-            cout<<"Collied\n";
-            checkpoints[i].destroyed = true;
-            checkpoints[i].current = false;
-            arrows[i].current = false;
-            if(i+1 != checkpoints.size())
-            {
-                checkpoints[i+1].destroyed = false;
-                checkpoints[i+1].current = true;
-                arrows[i+1].current = true;
-            }
-            
-            // checkpoints.erase(checkpoints.begin() + i);
-            // canons.erase(canons.begin() + i);
-            // arrows.erase(arrows.begin() + i);
-            // checkpoints[0].current = true;
-            // arrows[0].current = true;
-        }
-        else
-        {
-            cout<<"Not Collied\n";
-        }
+        checkpoints[i].tick();
     }
     for(int i=0;i<parachutes.size();++i)
     {

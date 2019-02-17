@@ -28,7 +28,7 @@ CheckPoint::CheckPoint(glm::vec3 origin) {
     // vertex_buffer2.push_back(0.0f);
 
 
-    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_DARK_BROWN, GL_LINE);
+    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_BROWN, GL_FILL);
     // this->object2 = create3DObject(GL_LINES, vertex_buffer2.size()/3, vertex_buffer2.data(), COLOR_RED, GL_FILL);
 }
 

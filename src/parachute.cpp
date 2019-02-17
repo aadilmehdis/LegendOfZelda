@@ -6,7 +6,7 @@ Parachute::Parachute(glm::vec3 origin) {
     this->position = origin;
     this->rotation = 0;
     this->radius = 6;
-    this->acceleration = 0.5;
+    this->acceleration = 0.3;
 
 	float z_pullBack = 5;
 
@@ -64,7 +64,7 @@ Parachute::Parachute(glm::vec3 origin) {
     vertex_buffer3.push_back(0.0f);
     vertex_buffer3.push_back(0.0f);
 
-    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_LINE);
+    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_FILL);
     this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_LAVA, GL_FILL);
     // this->object3 = create3DObject(GL_LINES, vertex_buffer3.size()/3, vertex_buffer3.data(), COLOR_GREEN, GL_FILL);
 }

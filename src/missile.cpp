@@ -7,7 +7,7 @@ Missile::Missile(glm::vec3 origin, glm::vec3 velocity, glm::mat4 rotate) {
     this->velocity = velocity;
     this->rotation = 0;
     this->rotate = rotate;
-    this->radius = 7;
+    this->radius = 6;
 
     speed = 1;
 
@@ -42,8 +42,8 @@ Missile::Missile(glm::vec3 origin, glm::vec3 velocity, glm::mat4 rotate) {
     }
 
 
-    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_DARK_BROWN, GL_LINE);
-    this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_RED, GL_FILL);
+    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_DARK_BROWN, GL_FILL);
+    // this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_RED, GL_FILL);
 }
 
 void Missile::draw(glm::mat4 VP) {
@@ -56,7 +56,7 @@ void Missile::draw(glm::mat4 VP) {
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object1);
-    draw3DObject(this->object2);
+    // draw3DObject(this->object2);
     // draw3DObject(this->object3);
 }
 

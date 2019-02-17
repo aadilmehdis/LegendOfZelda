@@ -18,7 +18,7 @@ Arrow::Arrow(glm::vec3 origin) {
         vertex_buffer[i] *= 4;
     }
 
-    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_LINE);
+    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_FILL);
 }
 
 void Arrow::draw(glm::mat4 VP) {

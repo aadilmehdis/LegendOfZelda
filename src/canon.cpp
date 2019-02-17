@@ -16,7 +16,7 @@ Canon::Canon(glm::vec3 origin) {
 	// vertex_buffer.insert(vertex_buffer.end(), vertex_buffer3.begin(), vertex_buffer3.end());
 
 
-    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_DARK_BROWN, GL_LINE);
+    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_BLACK, GL_FILL);
 }
 
 void Canon::draw(glm::mat4 VP) {
