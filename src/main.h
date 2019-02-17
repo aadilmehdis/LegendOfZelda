@@ -94,5 +94,11 @@ extern const color_t COLOR_JET_BODY;
 extern const color_t COLOR_JET_WING;
 extern const color_t COLOR_JET_TAIL;
 extern const color_t COLOR_JET_FRAME;
+extern const color_t COLOR_LIME;
+extern const color_t COLOR_NOIR;
+extern const color_t COLOR_SILVER;
+extern const color_t COLOR_LIGHT_BROWN;
+extern const color_t COLOR_SUNFLOWER;
+extern const color_t COLOR_OCEAN_GREEN;
 
 #endif

@@ -26,15 +26,6 @@ Missile::Missile(glm::vec3 origin, glm::vec3 velocity, glm::mat4 rotate) {
 	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer2.begin(), vertex_buffer2.end());
 	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer3.begin(), vertex_buffer3.end());
 
-    std::vector<GLfloat> vertex_buffer4;
-    vertex_buffer4.push_back(0.0f);
-    vertex_buffer4.push_back(0.0f);
-    vertex_buffer4.push_back(0.0f);
-
-    vertex_buffer4.push_back(this->radius);
-    vertex_buffer4.push_back(0.0f);
-    vertex_buffer4.push_back(0.0f);
-
 
     for(int i=0;i<vertex_buffer.size();++i)
     {
@@ -43,7 +34,7 @@ Missile::Missile(glm::vec3 origin, glm::vec3 velocity, glm::mat4 rotate) {
 
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_DARK_BROWN, GL_FILL);
-    // this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_RED, GL_FILL);
+    this->object2 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LIGHT_BROWN, GL_LINE);
 }
 
 void Missile::draw(glm::mat4 VP) {
@@ -56,8 +47,7 @@ void Missile::draw(glm::mat4 VP) {
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object1);
-    // draw3DObject(this->object2);
-    // draw3DObject(this->object3);
+    draw3DObject(this->object2);
 }
 
 

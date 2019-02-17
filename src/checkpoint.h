@@ -17,7 +17,9 @@ public:
 
 private:
     VAO *object1;
-    // VAO *object2;
+    VAO *object2;
+    VAO *object3;
+    VAO *object4;
 };
 
 #endif // BALL_H

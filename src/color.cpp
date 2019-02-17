@@ -14,6 +14,14 @@ const color_t COLOR_JET_BODY = { 245,245,245};
 const color_t COLOR_JET_WING = { 181, 152, 90 };
 const color_t COLOR_JET_TAIL = { 36, 99, 142 };
 const color_t COLOR_JET_FRAME = { 167, 169, 172};
+const color_t COLOR_LIME = { 0, 255, 0};
+const color_t COLOR_NOIR = { 0, 0, 0};
+const color_t COLOR_SILVER = { 192, 192, 192};
+const color_t COLOR_LIGHT_BROWN = { 208,180,160};
+const color_t COLOR_SUNFLOWER = { 254, 247, 64};
+const color_t COLOR_OCEAN_GREEN = { 121, 208, 174 };
+
+
 
 
 

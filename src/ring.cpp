@@ -28,8 +28,7 @@ Ring::Ring(glm::vec3 origin) {
 
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_SMOKE, GL_FILL);
-    this->object2 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_BLACK, GL_LINE);
-    this->object3 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_LAVA, GL_FILL);
+    this->object2 = create3DObject(GL_LINES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_JET_BODY, GL_LINE);
 }
 
 void Ring::draw(glm::mat4 VP) {
@@ -45,7 +44,6 @@ void Ring::draw(glm::mat4 VP) {
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object1);
     draw3DObject(this->object2);
-    draw3DObject(this->object3);
 }
 
 

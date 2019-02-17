@@ -16,20 +16,12 @@ CheckPoint::CheckPoint(glm::vec3 origin) {
     std::vector<GLfloat> vertex_buffer = makePrism(20,10,3,true,0,0+y_pullBack,0+z_pullBack);
     std::vector<GLfloat> vertex_buffer1 = makePrism(4,18,3,true,0,0+y_pullBack,3+z_pullBack);
 
-	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer1.begin(), vertex_buffer1.end());
-
-    std::vector<GLfloat> vertex_buffer2;
-    // vertex_buffer2.push_back(0.0f);
-    // vertex_buffer2.push_back(0.0f);
-    // vertex_buffer2.push_back(0.0f);
-
-    // vertex_buffer2.push_back(0.0f);
-    // vertex_buffer2.push_back(this->radius);
-    // vertex_buffer2.push_back(0.0f);
-
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_BROWN, GL_FILL);
-    // this->object2 = create3DObject(GL_LINES, vertex_buffer2.size()/3, vertex_buffer2.data(), COLOR_RED, GL_FILL);
+    this->object2 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LIGHT_BROWN, GL_LINE);
+    this->object3 = create3DObject(GL_TRIANGLES, vertex_buffer1.size()/3, vertex_buffer1.data(), COLOR_NOIR, GL_FILL);
+    this->object4 = create3DObject(GL_TRIANGLES, vertex_buffer1.size()/3, vertex_buffer1.data(), COLOR_SILVER, GL_LINE);
+
 }
 
 void CheckPoint::draw(glm::mat4 VP) {
@@ -46,7 +38,9 @@ void CheckPoint::draw(glm::mat4 VP) {
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object1);
-    // draw3DObject(this->object2);
+    draw3DObject(this->object2);
+    draw3DObject(this->object3);
+    draw3DObject(this->object4);
 }
 
 

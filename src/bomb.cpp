@@ -34,8 +34,8 @@ Bomb::Bomb(glm::vec3 origin, glm::vec3 velocity, glm::mat4 rotate) {
     vertex_buffer4.push_back(0.0f);
 
 
-    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_DARK_BROWN, GL_LINE);
-    this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_RED, GL_FILL);
+    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_NOIR, GL_FILL);
+    this->object2 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_SILVER, GL_LINE);
 }
 
 void Bomb::draw(glm::mat4 VP) {

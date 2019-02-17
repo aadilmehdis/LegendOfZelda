@@ -40,8 +40,8 @@ CanonBall::CanonBall(glm::vec3 origin, glm::vec3 target) {
     vertex_buffer4.push_back(0.0f);
 
 
-    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_FILL);
-    // this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_BLACK, GL_FILL);
+    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_JET_FRAME, GL_FILL);
+    this->object2 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_SILVER, GL_LINE);
 }
 
 void CanonBall::draw(glm::mat4 VP) {
@@ -56,7 +56,7 @@ void CanonBall::draw(glm::mat4 VP) {
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object1);
-    // draw3DObject(this->object2);
+    draw3DObject(this->object2);
 }
 
 
