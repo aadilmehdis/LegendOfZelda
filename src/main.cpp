@@ -147,10 +147,6 @@ void draw() {
     {
         altitude[i].draw(VP2);
     }
-    for(int i=0; i<speed.size();++i)
-    {
-        speed[i].draw(VP2);
-    }
     for(int i=0; i<fuel.size();++i)
     {
         fuel[i].draw(VP2);
@@ -409,6 +405,7 @@ void tick_elements() {
         if(detect_collision(canonballs[i].position,jet.position,canonballs[i].radius,jet.radius))
         {
             canonballs.erase(canonballs.begin() + i);
+            jet.percentageDamage += 10;
         }
     }
     for(int i=0;i<arrows.size();++i)
@@ -421,6 +418,7 @@ void tick_elements() {
         if(detect_collision(fueltanks[i].position,jet.position,fueltanks[i].radius,jet.radius))
         {
             fueltanks.erase(fueltanks.begin() + i);
+            jet.fuelRemaining += 600;
         }
     }
 
@@ -431,6 +429,11 @@ void tick_elements() {
     for(int i=0;i<parachutes.size();++i)
     {
         parachutes[i].tick(jet.position);
+        if(detect_collision(parachutes[i].position,jet.position,parachutes[i].radius,jet.radius))
+        {
+            parachutes.erase(parachutes.begin() + i);
+            jet.percentageDamage += 10;
+        }
     }
 
 
@@ -445,8 +448,8 @@ void tick_elements() {
     
 
     set_ssd(floor(jet.position.y), altitude);
-    set_ssd(floor(jet.position.y), speed);
-    set_ssd(floor(jet.position.y), fuel);
+    set_ssd(floor(jet.percentageDamage), speed);
+    set_ssd(floor(jet.fuelRemaining), fuel);
 
 }
 

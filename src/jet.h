@@ -20,6 +20,9 @@ public:
     glm::vec3 velocity;
     float acceleration;
 
+    long long int percentageDamage;
+    long long int fuelRemaining;
+
     double radius;
 
     void yawLeft();

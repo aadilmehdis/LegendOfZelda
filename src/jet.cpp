@@ -10,6 +10,9 @@ Jet::Jet(float x, float y, color_t color) {
 	this->velocity = this->zLocal;
 	this->acceleration = 0.5f;
 
+	this->fuelRemaining = 1800;
+	this->percentageDamage = 0;
+
 	this->radius = 15;
 
     this->rotation = 0;
@@ -274,6 +277,7 @@ void Jet::draw(glm::mat4 VP) {
 void Jet::tick() {
 	this->velocity = glm::normalize(this->zLocal) * this->acceleration;
 	this->position -= this->velocity;
+	this->fuelRemaining -= 1;
 	// this->position -= glm::vec3(0,0.1,0);
 }
 
