@@ -5,20 +5,31 @@
 Ring::Ring(glm::vec3 origin) {
     this->position = origin;
     this->rotation = 0;
+    this->radius = 0.2;
 
-	float z_pullBack = 5;
+	float z_pullBack = 3;
 
-    std::vector<GLfloat> vertex_buffer = makeTorus(20, 3, 5, 2, 0,0,0);
+    std::vector<GLfloat> vertex_buffer = makeTorus(20, 3, 5, 2, 0,0,0+z_pullBack);
 
     for(int i=0;i<vertex_buffer.size();++i)
     {
         vertex_buffer[i] *= 4;
     }
 
+    std::vector<GLfloat> vertex_buffer4;
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+
+    vertex_buffer4.push_back(this->radius);
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+
 
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_SMOKE, GL_FILL);
     this->object2 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_BLACK, GL_LINE);
+    this->object3 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_LAVA, GL_FILL);
 }
 
 void Ring::draw(glm::mat4 VP) {
@@ -34,6 +45,7 @@ void Ring::draw(glm::mat4 VP) {
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object1);
     draw3DObject(this->object2);
+    draw3DObject(this->object3);
 }
 
 

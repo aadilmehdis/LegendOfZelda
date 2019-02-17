@@ -5,6 +5,8 @@
 CanonBall::CanonBall(glm::vec3 origin, glm::vec3 target) {
     this->position = origin;
 
+    this->radius = 2.0;
+
     glm::vec3 dir = -1.0f * (target - this->position);
     dir = glm::normalize(dir);
     this->rotate[2] = glm::vec4(dir,0);
@@ -28,8 +30,18 @@ CanonBall::CanonBall(glm::vec3 origin, glm::vec3 target) {
 	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer2.begin(), vertex_buffer2.end());
 	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer3.begin(), vertex_buffer3.end());
 
+    std::vector<GLfloat> vertex_buffer4;
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+
+    vertex_buffer4.push_back(this->radius);
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_LINE);
+    this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_BLACK, GL_FILL);
 }
 
 void CanonBall::draw(glm::mat4 VP) {
@@ -44,6 +56,7 @@ void CanonBall::draw(glm::mat4 VP) {
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object1);
+    draw3DObject(this->object2);
 }
 
 

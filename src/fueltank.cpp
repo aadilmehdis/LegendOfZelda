@@ -5,11 +5,12 @@
 FuelTank::FuelTank(glm::vec3 origin) {
     this->position = origin;
     this->rotation = 0;
+    this->radius = 12;
 
-	float z_pullBack = 5;
+	float z_pullBack = 2;
 
-    std::vector<GLfloat> vertex_buffer = makePrism(4, 2, 3, true, 0, 0, 0);
-    std::vector<GLfloat> vertex_buffer1 = makeFrustum(4, 2, 1, 1, true, 0 , 0,-3);
+    std::vector<GLfloat> vertex_buffer = makePrism(4, 2, 3, true, 0, 0, 0+z_pullBack);
+    std::vector<GLfloat> vertex_buffer1 = makeFrustum(4, 2, 1, 1, true, 0 , 0,-3+z_pullBack);
 	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer1.begin(), vertex_buffer1.end());
 
     for(int i=0;i<vertex_buffer.size();++i)
@@ -17,7 +18,20 @@ FuelTank::FuelTank(glm::vec3 origin) {
         vertex_buffer[i] *= 4;
     }
 
+    std::vector<GLfloat> vertex_buffer4;
+
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+
+    vertex_buffer4.push_back(this->radius);
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+
+
+
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_GREEN, GL_LINE);
+    this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_BLACK, GL_FILL);
 }
 
 void FuelTank::draw(glm::mat4 VP) {
@@ -33,6 +47,7 @@ void FuelTank::draw(glm::mat4 VP) {
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object1);
+    draw3DObject(this->object2);
 }
 
 

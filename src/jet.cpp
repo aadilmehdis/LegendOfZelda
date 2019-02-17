@@ -8,7 +8,9 @@ Jet::Jet(float x, float y, color_t color) {
 	this->yLocal = glm::vec3(0, 1, 0);
 	this->zLocal = glm::vec3(0, 0, 1);
 	this->velocity = this->zLocal;
-	this->acceleration = 0.1f;
+	this->acceleration = 0.5f;
+
+	this->radius = 15;
 
     this->rotation = 0;
     speed = 1;
@@ -225,11 +227,23 @@ Jet::Jet(float x, float y, color_t color) {
 	crossHairBuffer.push_back(-12.0f);
 
 
+	std::vector<GLfloat> rad;
+
+	rad.push_back(0.0f);
+	rad.push_back(0.0f);
+	rad.push_back(0.0f);
+
+	rad.push_back(0.0f);
+	rad.push_back(0.0f);
+	rad.push_back(this->radius);
+
+
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_JET_BODY, GL_FILL);
     this->frame1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_JET_FRAME, GL_LINE);
     this->object2 = create3DObject(GL_TRIANGLES, vertex_buffer6.size()/3, vertex_buffer6.data(), COLOR_JET_TAIL, GL_FILL);
     this->object3 = create3DObject(GL_TRIANGLES, vertex_buffer7.size()/3, vertex_buffer7.data(), COLOR_JET_WING, GL_FILL);
     this->crosshair = create3DObject(GL_LINES, crossHairBuffer.size()/3, crossHairBuffer.data(), COLOR_BLACK, GL_FILL);
+    this->rad = create3DObject(GL_LINES, rad.size()/3, rad.data(), COLOR_RED, GL_FILL);
 }
 
 void Jet::draw(glm::mat4 VP) {
@@ -253,6 +267,7 @@ void Jet::draw(glm::mat4 VP) {
     draw3DObject(this->object2);
     draw3DObject(this->object3);
     draw3DObject(this->crosshair);
+    draw3DObject(this->rad);
 }
 
 

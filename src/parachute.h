@@ -1,22 +1,21 @@
 #include "main.h"
 
-#ifndef FUELTANK_H
-#define FUELTANK_H
+#ifndef PARACHUTE_H
+#define PARACHUTE_H
 
 
-class FuelTank {
+class Parachute {
 public:
-    FuelTank() {}
-    FuelTank(glm::vec3 origin);
+    Parachute() {}
+    Parachute(glm::vec3 origin);
     glm::vec3 position;
     double rotation;
-    double radius;
+    bool current;
     void draw(glm::mat4 VP);
     void tick();
 
 private:
     VAO *object1;
-    VAO *object2;
 };
 
 #endif // BALL_H

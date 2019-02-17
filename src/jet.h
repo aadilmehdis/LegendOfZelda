@@ -20,6 +20,8 @@ public:
     glm::vec3 velocity;
     float acceleration;
 
+    double radius;
+
     void yawLeft();
     void yawRight();
 
@@ -35,6 +37,7 @@ private:
     VAO *object2;
     VAO *object3;
     VAO *frame1;
+    VAO *rad;
     // VAO *frame2;
     // VAO *frame3;
     VAO *crosshair;

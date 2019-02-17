@@ -11,13 +11,13 @@ public:
     glm::vec3 position;
     bool destroyed;
     bool current;
+    double radius;
     void draw(glm::mat4 VP);
     void tick();
 
 private:
     VAO *object1;
-    VAO *object2;
-    VAO *object3;
+    // VAO *object2;
 };
 
 #endif // BALL_H

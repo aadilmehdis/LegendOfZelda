@@ -7,6 +7,7 @@ std::vector<GLfloat> makePrism(int nSides, double baseRadius, double height, boo
 std::vector<GLfloat> makePyramid(int nSides, double baseRadius, double height, bool ends, float x_pos, float y_pos, float z_pos);
 std::vector<GLfloat> makeFrustum(int nSides, double baseRadius, double upRadius, double height, bool ends, float x_pos, float y_pos, float z_pos);
 std::vector<GLfloat> makeTorus(int nSides, double innerRadius, double outerRadius, double height, float x_pos, float y_pos, float z_pos);
+std::vector<GLfloat> makeHalfTorus(int nSides, double innerRadius, double outerRadius, double height, float x_pos, float y_pos, float z_pos);
 
 
 #endif

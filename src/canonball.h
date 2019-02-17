@@ -11,6 +11,7 @@ public:
     glm::vec3 position;
     glm::vec3 velocity;
     glm::mat4 rotate;
+    double radius;
     void draw(glm::mat4 VP);
     void tick();
 

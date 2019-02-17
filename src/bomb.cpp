@@ -7,6 +7,7 @@ Bomb::Bomb(glm::vec3 origin, glm::vec3 velocity, glm::mat4 rotate) {
     this->rotate = rotate;
     this->gravity = glm::vec3(0,0.01,0);
     this->velocity = velocity;
+    this->radius = 2.5;
 
 	float z_pullBack = 5;
 
@@ -23,8 +24,18 @@ Bomb::Bomb(glm::vec3 origin, glm::vec3 velocity, glm::mat4 rotate) {
     // {
     //     vertex_buffer[i] ;
     // }
+    std::vector<GLfloat> vertex_buffer4;
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+
+    vertex_buffer4.push_back(this->radius);
+    vertex_buffer4.push_back(0.0f);
+    vertex_buffer4.push_back(0.0f);
+
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_DARK_BROWN, GL_LINE);
+    this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_RED, GL_FILL);
 }
 
 void Bomb::draw(glm::mat4 VP) {
@@ -38,6 +49,7 @@ void Bomb::draw(glm::mat4 VP) {
     glm::mat4 MVP = VP * Matrices.model;
     glUniformMatrix4fv(Matrices.MatrixID, 1, GL_FALSE, &MVP[0][0]);
     draw3DObject(this->object1);
+    draw3DObject(this->object2);
 }
 
 

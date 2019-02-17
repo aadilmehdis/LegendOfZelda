@@ -333,6 +333,37 @@ void tick_elements() {
         fueltanks[i].tick();
     }
 
+    for(int i=0;i<checkpoints.size();++i)
+    {
+        if(detect_collision(checkpoints[i].position, jet.position, checkpoints[i].radius, jet.radius))
+        {
+            cout<<"Collied\n";
+            checkpoints[i].destroyed = true;
+            checkpoints[i].current = false;
+            arrows[i].current = false;
+            if(i+1 != checkpoints.size())
+            {
+                checkpoints[i+1].destroyed = false;
+                checkpoints[i+1].current = true;
+                arrows[i+1].current = true;
+            }
+            
+            // checkpoints.erase(checkpoints.begin() + i);
+            // canons.erase(canons.begin() + i);
+            // arrows.erase(arrows.begin() + i);
+            // checkpoints[0].current = true;
+            // arrows[0].current = true;
+        }
+        else
+        {
+            cout<<"Not Collied\n";
+        }
+        
+    }
+
+
+
+
     mousetimer++;
     
     if(mousetimer%3==0)
@@ -557,20 +588,16 @@ void spawn_canonballs()
 {
     for(int i=0;i<canons.size();++i)
     {
-        if(glm::distance(jet.position,canons[i].position) < 300)
+        if(!checkpoints[i].destroyed)
         {
-            if(game_timer%50==0)
+            if(glm::distance(jet.position,canons[i].position) < 300)
             {
-                glm::vec3 predicted_jet_pos;
-                // if(canons[i].position.z < jet.position.z)
-                // {
+                if(game_timer%50==0)
+                {
+                    glm::vec3 predicted_jet_pos;
                     predicted_jet_pos = jet.position - jet.velocity * 60.0f;
-                // }
-                // else 
-                // {
-                    // predicted_jet_pos = jet.position + jet.velocity * 120.0f;
-                // }
-                canonballs.push_back(CanonBall(canons[i].position, predicted_jet_pos));
+                    canonballs.push_back(CanonBall(canons[i].position, predicted_jet_pos));
+                }
             }
         }
     }
