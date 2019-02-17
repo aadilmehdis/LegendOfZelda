@@ -184,7 +184,7 @@ void tick_input(GLFWwindow *window) {
 
     if(jetView)
     {
-        eye = jet.position + jet.zLocal * -5.0f;
+        eye = jet.position + jet.zLocal * -10.0f;
         target = jet.position + jet.zLocal * -1000.0f;
         up = jet.yLocal;
     }
@@ -239,6 +239,8 @@ void tick_input(GLFWwindow *window) {
     else if(followCamView || true)
     {
         eye = jet.position + jet.zLocal*30.0f + jet.yLocal*10.0f;
+        // eye = jet.position + glm::vec3(0,0,1)*50.0f + glm::vec3(0,1,0)*10.0f;
+        // up = glm::vec3(0,1,0);
         up = jet.yLocal;
         target = jet.position;
     }
@@ -359,24 +361,24 @@ void initGL(GLFWwindow *window, int width, int height) {
 
     checkpoints.push_back(glm::vec3(200,0,-330));
     canons.push_back(Canon(glm::vec3(200,0,-330)));
-    arrows.push_back(Arrow(glm::vec3(200,30,-330)));
+    arrows.push_back(Arrow(glm::vec3(200,100,-330)));
 
     checkpoints.push_back(glm::vec3(-330,0,-660));
     canons.push_back(Canon(glm::vec3(-330,0,-660)));
-    arrows.push_back(Arrow(glm::vec3(-330,30,-660)));
+    arrows.push_back(Arrow(glm::vec3(-330,100,-660)));
 
 
     checkpoints.push_back(glm::vec3(100,0,-990));
     canons.push_back(Canon(glm::vec3(100,0,-990)));
-    arrows.push_back(Arrow(glm::vec3(100,30,-990)));
+    arrows.push_back(Arrow(glm::vec3(100,100,-990)));
 
     checkpoints.push_back(glm::vec3(-430,0,-1220));
     canons.push_back(Canon(glm::vec3(-430,0,-1220)));
-    arrows.push_back(Arrow(glm::vec3(-430,30,-1220)));
+    arrows.push_back(Arrow(glm::vec3(-430,100,-1220)));
 
     checkpoints.push_back(glm::vec3(0,0,-1550));
     canons.push_back(Canon(glm::vec3(0,0,-1550)));
-    arrows.push_back(Arrow(glm::vec3(0,30,-1550)));
+    arrows.push_back(Arrow(glm::vec3(0,100,-1550)));
 
     for(int i=-5 ; i<5 ; ++i)
     {

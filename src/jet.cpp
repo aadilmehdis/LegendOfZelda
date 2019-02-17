@@ -102,10 +102,10 @@ Jet::Jet(float x, float y, color_t color) {
 	vertex_buffer.push_back(-6 + z_pullBack);
 	//fin close
 
-	// for(int i=0;i<vertex_buffer.size();++i)
-	// {
-	// 	vertex_buffer[i] *= 10;
-	// }
+	for(int i=0;i<vertex_buffer.size();++i)
+	{
+		vertex_buffer[i] *= 2;
+	}
 
 
 

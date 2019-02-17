@@ -227,3 +227,108 @@ std::vector<GLfloat> makeFrustum(int nSides, double baseRadius, double upRadius,
 	}
     return vertex_buffer;
 }
+
+
+
+std::vector<GLfloat> makeTorus(int nSides, double innerRadius, double outerRadius double height, float x_pos, float y_pos, float z_pos)
+{
+    std::vector<GLfloat> vertex_buffer;
+	double PI = 3.1415926535897932384626433;
+
+	double theta = 2*PI/nSides;
+	double SinTheta = sin(theta), CosTheta = cos(theta);
+
+	float polygon_x = 0.0f, polygon_y = outerRadius;
+	float xx = 0.0f, yy = innerRadius;
+
+	for(int i=0;i<nSides;++i)
+	{
+		double temp_x = xx * CosTheta + yy * SinTheta;
+		double temp_y = yy * CosTheta - xx * SinTheta;
+		double temp_x2 = polygon_x * CosTheta + polygon_y * SinTheta;
+		double temp_y2 = polygon_y * CosTheta - polygon_x * SinTheta;
+
+	
+		vertex_buffer.push_back(xx+x_pos);
+		vertex_buffer.push_back(yy+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+		vertex_buffer.push_back(temp_x+x_pos);
+		vertex_buffer.push_back(temp_y+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+		vertex_buffer.push_back(xx+x_pos);
+		vertex_buffer.push_back(yy+y_pos);
+		vertex_buffer.push_back(-1*height+z_pos);
+
+		vertex_buffer.push_back(xx+x_pos);
+		vertex_buffer.push_back(yy+y_pos);
+		vertex_buffer.push_back(-1*height+z_pos);
+
+		vertex_buffer.push_back(temp_x+x_pos);
+		vertex_buffer.push_back(temp_y+y_pos);
+		vertex_buffer.push_back(-1*height+z_pos);
+
+		vertex_buffer.push_back(temp_x+x_pos);
+		vertex_buffer.push_back(temp_y+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+		//////////////
+
+		vertex_buffer.push_back(polygon_x+x_pos);
+		vertex_buffer.push_back(polygon_y+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+		vertex_buffer.push_back(temp_x+x_pos);
+		vertex_buffer.push_back(temp_y+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+		vertex_buffer.push_back(polygon_x+x_pos);
+		vertex_buffer.push_back(polygon_y+y_pos);
+		vertex_buffer.push_back(-1*height+z_pos);
+
+		vertex_buffer.push_back(polygon_x+x_pos);
+		vertex_buffer.push_back(polygon_y+y_pos);
+		vertex_buffer.push_back(-1*height+z_pos);
+
+		vertex_buffer.push_back(temp_x+x_pos);
+		vertex_buffer.push_back(temp_y+y_pos);
+		vertex_buffer.push_back(-1*height+z_pos);
+
+		vertex_buffer.push_back(temp_x+x_pos);
+		vertex_buffer.push_back(temp_y+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+////////////////
+		vertex_buffer.push_back(polygon_x+x_pos);
+		vertex_buffer.push_back(polygon_y+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+		vertex_buffer.push_back(temp_x+x_pos);
+		vertex_buffer.push_back(temp_y+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+		vertex_buffer.push_back(xx+x_pos);
+		vertex_buffer.push_back(yy+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+		vertex_buffer.push_back(temp_x+x_pos);
+		vertex_buffer.push_back(temp_y+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+		vertex_buffer.push_back(xx+x_pos);
+		vertex_buffer.push_back(yy+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+		vertex_buffer.push_back(temp_x+x_pos);
+		vertex_buffer.push_back(temp_y+y_pos);
+		vertex_buffer.push_back(0+z_pos);
+
+
+		xx = temp_x;
+		yy = temp_y;
+		polygon_x = temp_x2;
+		polygon_y = temp_y3;
+	}
+
+    return vertex_buffer;
+}

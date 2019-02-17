@@ -9,59 +9,17 @@ Arrow::Arrow(glm::vec3 origin) {
 	float z_pullBack = 5;
 
     std::vector<GLfloat> vertex_buffer = makeFrustum(4, 2, 1, 10, true, 0, 0, 0);
+    std::vector<GLfloat> vertex_buffer1 = makePyramid(15, 2, 5, true,0,0,-10);
+	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer1.begin(), vertex_buffer1.end());
 
-    vertex_buffer.push_back(2);
-    vertex_buffer.push_back(-0.5);
-    vertex_buffer.push_back(-9);
-
-    vertex_buffer.push_back(0);
-    vertex_buffer.push_back(-0.5);
-    vertex_buffer.push_back(-10);
-
-    vertex_buffer.push_back(0);
-    vertex_buffer.push_back(-0.5);
-    vertex_buffer.push_back(-11);
-
-    vertex_buffer.push_back(-2);
-    vertex_buffer.push_back(-0.5);
-    vertex_buffer.push_back(-9);
-
-    vertex_buffer.push_back(0);
-    vertex_buffer.push_back(-0.5);
-    vertex_buffer.push_back(-10);
-
-    vertex_buffer.push_back(0);
-    vertex_buffer.push_back(-0.5);
-    vertex_buffer.push_back(-11);
-
-    vertex_buffer.push_back(2);
-    vertex_buffer.push_back(0.5);
-    vertex_buffer.push_back(-9);
-
-    vertex_buffer.push_back(0);
-    vertex_buffer.push_back(0.5);
-    vertex_buffer.push_back(-10);
-
-    vertex_buffer.push_back(0);
-    vertex_buffer.push_back(0.5);
-    vertex_buffer.push_back(-11);
-
-    vertex_buffer.push_back(-2);
-    vertex_buffer.push_back(0.5);
-    vertex_buffer.push_back(-9);
-
-    vertex_buffer.push_back(0);
-    vertex_buffer.push_back(0.5);
-    vertex_buffer.push_back(-10);
-
-    vertex_buffer.push_back(0);
-    vertex_buffer.push_back(0.5);
-    vertex_buffer.push_back(-11);
-
-    
+    for(int i=0;i<vertex_buffer.size();++i)
+    {
+        vertex_buffer[i] *= 4;
+    }
 
 
-    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_FILL);
+
+    this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_LINE);
 }
 
 void Arrow::draw(glm::mat4 VP) {

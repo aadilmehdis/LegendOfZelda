@@ -19,10 +19,10 @@ Bomb::Bomb(glm::vec3 origin, glm::vec3 velocity, glm::mat4 rotate) {
 	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer2.begin(), vertex_buffer2.end());
 	vertex_buffer.insert(vertex_buffer.end(), vertex_buffer3.begin(), vertex_buffer3.end());
 
-    for(int i=0;i<vertex_buffer.size();++i)
-    {
-        vertex_buffer[i] *= 0.5;
-    }
+    // for(int i=0;i<vertex_buffer.size();++i)
+    // {
+    //     vertex_buffer[i] ;
+    // }
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_DARK_BROWN, GL_LINE);
 }

@@ -38,7 +38,7 @@ Missile::Missile(glm::vec3 origin, glm::vec3 velocity, glm::mat4 rotate) {
 
     for(int i=0;i<vertex_buffer.size();++i)
     {
-        vertex_buffer[i] *= 0.3;
+        vertex_buffer[i] *= 0.6;
     }
 
 
