@@ -11,6 +11,8 @@
 #include "volcano.h"
 #include "canonball.h"
 #include "arrow.h"
+#include "ring.h"
+#include "fueltank.h"
 
 using namespace std;
 
@@ -36,6 +38,9 @@ std::vector<CheckPoint> checkpoints;
 std::vector<Volcano> volcanos;
 std::vector<CanonBall> canonballs;
 std::vector<Arrow> arrows;
+std::vector<Ring> rings;
+std::vector<FuelTank> fueltanks;
+
 
 long long int game_timer = 0;
 
@@ -46,8 +51,14 @@ int bomb_timer = 10;
 // spawn functions
 void spawn_missile();
 void spawn_bombs();
+void spawn_dashboard();
+void spawn_sea();
 void spawn_canonballs();
+void spawn_checkpoints();
+void spawn_volcanos();
 void update_timers();
+void spawn_rings();
+void spawn_fueltanks();
 void set_ssd(int number, vector<SSD> &ssd);
 //
 
@@ -160,6 +171,14 @@ void draw() {
     for(int i=0;i<arrows.size();++i)
     {
         arrows[i].draw(VP);
+    }
+    for(int i=0;i<rings.size();++i)
+    {
+        rings[i].draw(VP);
+    }
+    for(int i=0;i<fueltanks.size();++i)
+    {
+        fueltanks[i].draw(VP);
     }
 }
 
@@ -309,6 +328,10 @@ void tick_elements() {
     {
         arrows[i].tick();
     }
+    for(int i=0;i<fueltanks.size();++i)
+    {
+        fueltanks[i].tick();
+    }
 
     mousetimer++;
     
@@ -331,63 +354,18 @@ void initGL(GLFWwindow *window, int width, int height) {
     // Create the models
 
     jet       = Jet(75, 25, COLOR_RED);
-
-    compass     = Compass(glm::vec3(-100,-97, -50 ));
-
-    // define the positions of the canons and checkpoints here 
-    // also define the position of the volcanos
-    // define the positions of the rings
-    // define the positions of the fuel up
-    // the initial position of the checkpoint arrow should be here
-
-    for(int i=0;i<5;++i)
-    {
-        altitude.push_back(SSD(-98+i*0.2,-97, COLOR_BLACK));  
-        speed.push_back(SSD(-103+i*0.2,-97, COLOR_BLACK));           
-        fuel.push_back(SSD(-100.5+i*0.2,-97.8, COLOR_BLACK));           
-    }
-
     eye = jet.position + jet.zLocal*30.0f + jet.yLocal*10.0f;
-
     target = jet.position;
 
-    for(int i=-10;i<10;++i)
-    {
-        for(int j=-10;j<50;++j)
-        {
-            seaTiles.push_back(Sea(i*100.0, -1.0, j* -100.0,COLOR_BACKGROUND));
-        }
-    }
+    // define the positions of the fuel up
 
-    checkpoints.push_back(glm::vec3(200,0,-330));
-    canons.push_back(Canon(glm::vec3(200,0,-330)));
-    arrows.push_back(Arrow(glm::vec3(200,100,-330)));
+    spawn_rings();
+    spawn_checkpoints();
+    spawn_volcanos();
+    spawn_sea();
+    spawn_dashboard();
+    spawn_fueltanks();
 
-    checkpoints.push_back(glm::vec3(-330,0,-660));
-    canons.push_back(Canon(glm::vec3(-330,0,-660)));
-    arrows.push_back(Arrow(glm::vec3(-330,100,-660)));
-
-
-    checkpoints.push_back(glm::vec3(100,0,-990));
-    canons.push_back(Canon(glm::vec3(100,0,-990)));
-    arrows.push_back(Arrow(glm::vec3(100,100,-990)));
-
-    checkpoints.push_back(glm::vec3(-430,0,-1220));
-    canons.push_back(Canon(glm::vec3(-430,0,-1220)));
-    arrows.push_back(Arrow(glm::vec3(-430,100,-1220)));
-
-    checkpoints.push_back(glm::vec3(0,0,-1550));
-    canons.push_back(Canon(glm::vec3(0,0,-1550)));
-    arrows.push_back(Arrow(glm::vec3(0,100,-1550)));
-
-    for(int i=-5 ; i<5 ; ++i)
-    {
-        for(int j=-5; j<25;++j)
-        {
-            // if(rand()%2 == 0)
-                volcanos.push_back(Volcano(glm::vec3(150*i,-11,-150*j)));
-        }
-    }
 
     // Create and compile our GLSL program from the shaders
     programID = LoadShaders("Sample_GL.vert", "Sample_GL.frag");
@@ -477,6 +455,75 @@ void mouseButtonCallBack(GLFWwindow *window, int button, int action, int mods) {
     }
 }
 
+void spawn_dashboard()
+{
+    compass     = Compass(glm::vec3(-100,-97, -50 ));
+    for(int i=0;i<5;++i)
+    {
+        altitude.push_back(SSD(-98+i*0.2,-97, COLOR_BLACK));  
+        speed.push_back(SSD(-103+i*0.2,-97, COLOR_BLACK));           
+        fuel.push_back(SSD(-100.5+i*0.2,-97.8, COLOR_BLACK));           
+    }
+}
+
+void spawn_sea()
+{
+    for(int i=-10;i<10;++i)
+    {
+        for(int j=-10;j<50;++j)
+        {
+            seaTiles.push_back(Sea(i*100.0, -1.0, j* -100.0,COLOR_BACKGROUND));
+        }
+    }
+}
+
+void spawn_rings()
+{
+    rings.push_back(Ring(glm::vec3(100,30,-330)));
+    rings.push_back(Ring(glm::vec3(-200,30,-650)));
+    rings.push_back(Ring(glm::vec3(250,30,-900)));
+    rings.push_back(Ring(glm::vec3(0,30,-1250)));
+    rings.push_back(Ring(glm::vec3(70,30,-1700)));
+    rings.push_back(Ring(glm::vec3(-250,30,-2000)));
+    rings.push_back(Ring(glm::vec3(430,30,-2300)));
+}
+
+void spawn_volcanos()
+{
+    for(int i=-5 ; i<5 ; ++i)
+    {
+        for(int j=-5; j<25;++j)
+        {
+            if(rand()%3 == 0)
+                volcanos.push_back(Volcano(glm::vec3(150*i,-11,-150*j)));
+        }
+    }
+}
+
+void spawn_checkpoints()
+{
+    checkpoints.push_back(glm::vec3(200,0,-500));
+    canons.push_back(Canon(glm::vec3(200,0,-500)));
+    arrows.push_back(Arrow(glm::vec3(200,100,-500)));
+
+    checkpoints.push_back(glm::vec3(-330,0,-800));
+    canons.push_back(Canon(glm::vec3(-330,0,-800)));
+    arrows.push_back(Arrow(glm::vec3(-330,100,-800)));
+
+
+    checkpoints.push_back(glm::vec3(100,0,-1100));
+    canons.push_back(Canon(glm::vec3(100,0,-1100)));
+    arrows.push_back(Arrow(glm::vec3(100,100,-1100)));
+
+    checkpoints.push_back(glm::vec3(-430,0,-1400));
+    canons.push_back(Canon(glm::vec3(-430,0,-1400)));
+    arrows.push_back(Arrow(glm::vec3(-430,100,-1400)));
+
+    checkpoints.push_back(glm::vec3(0,0,-2500));
+    canons.push_back(Canon(glm::vec3(0,0,-2500)));
+    arrows.push_back(Arrow(glm::vec3(0,100,-2500)));
+}
+
 void spawn_missile() 
 {
     glm::mat4 rotate;
@@ -485,6 +532,11 @@ void spawn_missile()
 	rotate[2] = glm::vec4(jet.zLocal,0);
 	rotate[3] = glm::vec4(0,0,0,1);
     missiles.push_back(Missile(jet.position, jet.zLocal, rotate));
+}
+
+void spawn_fueltanks()
+{
+    fueltanks.push_back(FuelTank(glm::vec3(0,100,-500)));
 }
 
 

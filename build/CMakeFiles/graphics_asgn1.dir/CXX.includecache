@@ -752,6 +752,10 @@ main.h
 main.h
 /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/main.h
 
+/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/fueltank.h
+main.h
+/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/main.h
+
 /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/jet.h
 main.h
 /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/main.h
@@ -783,6 +787,10 @@ canonball.h
 /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/canonball.h
 arrow.h
 /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/arrow.h
+ring.h
+/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/ring.h
+fueltank.h
+/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/fueltank.h
 
 /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/main.h
 iostream
@@ -805,6 +813,10 @@ glm/gtc/matrix_transform.hpp
 -
 
 /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/missile.h
+main.h
+/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/main.h
+
+/Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/ring.h
 main.h
 /Users/aadilmehdi/Semester4/Graphics/Assignments/Assignment2/LegendOfZelda/src/main.h
 
