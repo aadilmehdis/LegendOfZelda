@@ -66,7 +66,7 @@ Parachute::Parachute(glm::vec3 origin) {
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_FILL);
     this->object2 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_LAVA, GL_FILL);
-    this->object3 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_SUNFLOWER, GL_LINE);
+    this->object3 = create3DObject(GL_LINES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_SUNFLOWER, GL_LINE);
     this->object4 = create3DObject(GL_LINES, vertex_buffer4.size()/3, vertex_buffer4.data(), COLOR_SUNFLOWER, GL_LINE);
 }
 

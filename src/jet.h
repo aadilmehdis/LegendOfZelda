@@ -23,6 +23,8 @@ public:
     long long int percentageDamage;
     long long int fuelRemaining;
 
+    long long int score;
+
     double radius;
 
     void yawLeft();

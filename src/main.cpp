@@ -51,6 +51,8 @@ int bomb_timer = 10;
 
 
 // spawn functions
+void checkGameOver();
+
 void spawn_missile();
 void spawn_bombs();
 void spawn_dashboard();
@@ -319,6 +321,7 @@ void tick_elements() {
                 {
                     if(!checkpoints[j].destroyed)
                     {
+                        jet.score += 10;
                         checkpoints[j].current = false;
                         checkpoints[j].destroyed = true;
                         arrows[j].current = false;
@@ -336,6 +339,7 @@ void tick_elements() {
         {
             if(detect_collision(parachutes[j].position,missiles[i].position,parachutes[j].radius,missiles[i].radius))
             {
+                jet.score += 10;
                 parachutes.erase(parachutes.begin() + j);
                 missiles.erase(missiles.begin() + i);
             }
@@ -344,6 +348,7 @@ void tick_elements() {
         {
             if(detect_collision(canonballs[j].position,missiles[i].position,canonballs[j].radius,missiles[i].radius))
             {
+                jet.score += 10;
                 canonballs.erase(canonballs.begin() + j);
                 missiles.erase(missiles.begin() + i);
             }
@@ -361,6 +366,7 @@ void tick_elements() {
                 {
                     if(!checkpoints[j].destroyed)
                     {
+                        jet.score += 10;
                         checkpoints[j].current = false;
                         checkpoints[j].destroyed = true;
                         arrows[j].current = false;
@@ -378,6 +384,7 @@ void tick_elements() {
         {
             if(detect_collision(parachutes[j].position,bombs[i].position,parachutes[j].radius,bombs[i].radius))
             {
+                jet.score += 10;
                 parachutes.erase(parachutes.begin() + j);
                 bombs.erase(bombs.begin() + i);
             }
@@ -386,6 +393,7 @@ void tick_elements() {
         {
             if(detect_collision(canonballs[j].position,bombs[i].position,canonballs[j].radius,bombs[i].radius))
             {
+                jet.score += 10;
                 canonballs.erase(canonballs.begin() + j);
                 bombs.erase(bombs.begin() + i);
             }
@@ -405,7 +413,7 @@ void tick_elements() {
         if(detect_collision(canonballs[i].position,jet.position,canonballs[i].radius,jet.radius))
         {
             canonballs.erase(canonballs.begin() + i);
-            jet.percentageDamage += 10;
+            jet.percentageDamage += 5;
         }
     }
     for(int i=0;i<arrows.size();++i)
@@ -432,10 +440,19 @@ void tick_elements() {
         if(detect_collision(parachutes[i].position,jet.position,parachutes[i].radius,jet.radius))
         {
             parachutes.erase(parachutes.begin() + i);
-            jet.percentageDamage += 10;
+            jet.percentageDamage += 2;
         }
     }
 
+    for(int i=0 ; i<rings.size() ; ++i)
+    {
+        rings[i].tick();
+        if(detect_collision(jet.position,rings[i].position,jet.radius,rings[i].radius))
+        {
+            rings.erase(rings.begin() + i);
+            jet.score += 50;
+        }
+    }
 
 
 
@@ -447,7 +464,7 @@ void tick_elements() {
     }
     
 
-    set_ssd(floor(jet.position.y), altitude);
+    set_ssd(floor(jet.position.y + 10), altitude);
     set_ssd(floor(jet.percentageDamage), speed);
     set_ssd(floor(jet.fuelRemaining), fuel);
 
@@ -524,7 +541,7 @@ int main(int argc, char **argv) {
             update_timers();
 
         }
-
+        checkGameOver();
         // Poll for Keyboard and mouse events
         glfwPollEvents();
     }
@@ -651,7 +668,12 @@ void spawn_missile()
 
 void spawn_fueltanks()
 {
-    fueltanks.push_back(FuelTank(glm::vec3(0,100,-500)));
+    fueltanks.push_back(FuelTank(glm::vec3(0,90,-500)));
+    fueltanks.push_back(FuelTank(glm::vec3(-430,120,-800)));
+    fueltanks.push_back(FuelTank(glm::vec3(200,80,-1100)));
+    fueltanks.push_back(FuelTank(glm::vec3(-650,130,-1500)));
+    fueltanks.push_back(FuelTank(glm::vec3(100,70,-2200)));
+    fueltanks.push_back(FuelTank(glm::vec3(400,100,-650)));
 }
 
 
@@ -708,5 +730,17 @@ void set_ssd(int number, vector<SSD> &ssd) {
     {
         ssd[j].set_digit(score_dig[i]);
         --i;++j;
+    }
+}
+
+void checkGameOver()
+{
+    if(jet.position.y<-10)
+    {
+        exit(0);
+    }
+    if(jet.percentageDamage > 100)
+    {
+        exit(0);
     }
 }

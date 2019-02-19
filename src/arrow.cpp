@@ -19,6 +19,7 @@ Arrow::Arrow(glm::vec3 origin) {
     }
 
     this->object1 = create3DObject(GL_TRIANGLES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_LAVA, GL_FILL);
+    this->object2 = create3DObject(GL_LINES, vertex_buffer.size()/3, vertex_buffer.data(), COLOR_RED, GL_LINE);
 }
 
 void Arrow::draw(glm::mat4 VP) {
@@ -36,6 +37,7 @@ void Arrow::draw(glm::mat4 VP) {
     if(this->current)
     {
         draw3DObject(this->object1);
+        draw3DObject(this->object2);
     }
 }
 
