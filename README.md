@@ -1,7 +1,7 @@
 # Legend Of Zelda Aeroplane Fight
 
 ## About
-The game is an OpenGL C++ implementation of a fighter plane game in a #D World.
+The game is an OpenGL C++ implementation of a fighter plane game in a 3D World.
 
 ## Instructions
 
@@ -15,19 +15,35 @@ The game is an OpenGL C++ implementation of a fighter plane game in a #D World.
 
 ## Controls
 
-- **SPACEBAR**
-  - Control the altitude of the Plane. Press the SPACEBAR to increase the altitude of the plane. On releasing the key the plane loses altitude.
-- **W**
-  - Increase the forward velocity of the plane
 - **A**
-  - Tilt the plane to the left
-- **D** 
-  - Tilt the plane to the right
-- **Q** 
-  - Rotate the plane to the counter clockwise
-- **E** 
-  - Rotate the plane to the clockwise
-- **Mouse Left Click**
-  - Release Missiles
-- **Mouse Right Click**
-  - Drop Bombs
+  - Roll the plane to the left
+- **D**
+  - Roll the plane to the right
+- **S** 
+  - Accelerate the plane
+- **W** 
+  - Decelerate the plane
+- **Right Arrow Key** 
+  - Yaw to the Right
+- **Left Arrow Key**
+  - Yaw to the Left
+- **Up Arrow Key**
+  - Pitch upwards
+- **Down Arrow Key**
+  - Pitch downwards
+- **SPACEBAR**
+  - Shoot Missile from the plane
+- **M**
+  - Drop Bombs from the plane
+- **Z**
+  - Follow Camera View
+- **X**
+  - Tower View
+- **C**
+  - Helicopter View
+    - Click and Drag to move the Camera
+    - Scroll to Zoom In or Zoom out
+- **V**
+  - Top View
+- **B**
+  - Jet View

@@ -201,8 +201,8 @@ void tick_input(GLFWwindow *window) {
     int d = glfwGetKey(window, GLFW_KEY_D);
     int f = glfwGetKey(window, GLFW_KEY_F);
     int g = glfwGetKey(window, GLFW_KEY_G);
-    int accelerate = glfwGetKey(window, GLFW_KEY_O);
-    int retard = glfwGetKey(window, GLFW_KEY_P);
+    int accelerate = glfwGetKey(window, GLFW_KEY_S);
+    int retard = glfwGetKey(window, GLFW_KEY_W);
 
     int missile = glfwGetKey(window, GLFW_KEY_SPACE);
     int bomb = glfwGetKey(window, GLFW_KEY_M);
