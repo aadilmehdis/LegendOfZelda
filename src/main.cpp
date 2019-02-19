@@ -543,6 +543,7 @@ int main(int argc, char **argv) {
             glfwSwapBuffers(window);
 
             spawn_canonballs();
+            spawn_parachutes();
 
             tick_elements();
             tick_input(window);
@@ -623,7 +624,11 @@ void spawn_rings()
 
 void spawn_parachutes()
 {
-    parachutes.push_back(Parachute(glm::vec3(0,20,-300)));
+
+    if(game_timer%250==0)
+    {
+        parachutes.push_back(Parachute(glm::vec3(jet.position.x, jet.position.y ,jet.position.z - 300)));
+    }
 }
 
 void spawn_volcanos()
