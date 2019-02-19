@@ -7,6 +7,7 @@ Volcano::Volcano(glm::vec3 origin) {
     this->position = origin;
     this->rotation = 0;
     speed = 1;
+    this->radius = 15;
 
 	float z_pullBack = 5;
 

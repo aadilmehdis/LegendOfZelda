@@ -10,6 +10,7 @@ public:
     Volcano(glm::vec3 origin);
     glm::vec3 position;
     float rotation;
+    double radius;
     void draw(glm::mat4 VP);
     void tick();
     double speed;

@@ -75,6 +75,7 @@ struct bounding_box_t {
 };
 
 bool detect_collision(glm::vec3 sphere1, glm::vec3 sphere2, double radius1, double radius2);
+bool detect_circlePoint(glm::vec3 sphere, glm::vec3 point, double radius);
 
 
 extern float screen_zoom, screen_center_x, screen_center_y;

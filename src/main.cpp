@@ -604,12 +604,12 @@ void spawn_sea()
 void spawn_rings()
 {
     rings.push_back(Ring(glm::vec3(100,30,-330)));
-    rings.push_back(Ring(glm::vec3(-200,30,-650)));
-    rings.push_back(Ring(glm::vec3(250,30,-900)));
-    rings.push_back(Ring(glm::vec3(0,30,-1250)));
-    rings.push_back(Ring(glm::vec3(70,30,-1700)));
-    rings.push_back(Ring(glm::vec3(-250,30,-2000)));
-    rings.push_back(Ring(glm::vec3(430,30,-2300)));
+    rings.push_back(Ring(glm::vec3(-200,50,-650)));
+    rings.push_back(Ring(glm::vec3(250,200,-900)));
+    rings.push_back(Ring(glm::vec3(0,20,-1250)));
+    rings.push_back(Ring(glm::vec3(70,100,-1700)));
+    rings.push_back(Ring(glm::vec3(-250,80,-2000)));
+    rings.push_back(Ring(glm::vec3(430,500,-2300)));
 }
 
 void spawn_parachutes()
@@ -743,4 +743,17 @@ void checkGameOver()
     {
         exit(0);
     }
+    for(int i=0;i<volcanos.size();++i)
+    {
+        if(detect_circlePoint(volcanos[i].position, jet.position, volcanos[i].radius))
+        {
+            exit(0);
+        }
+    }
+}
+
+bool detect_circlePoint(glm::vec3 sphere, glm::vec3 point, double radius)
+{
+    double dist = sqrt( pow(sphere.x - point.x, 2) + pow(sphere.z - point.z, 2));
+    return dist < radius; 
 }
