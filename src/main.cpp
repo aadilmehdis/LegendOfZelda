@@ -201,6 +201,8 @@ void tick_input(GLFWwindow *window) {
     int d = glfwGetKey(window, GLFW_KEY_D);
     int f = glfwGetKey(window, GLFW_KEY_F);
     int g = glfwGetKey(window, GLFW_KEY_G);
+    int accelerate = glfwGetKey(window, GLFW_KEY_O);
+    int retard = glfwGetKey(window, GLFW_KEY_P);
 
     int missile = glfwGetKey(window, GLFW_KEY_M);
     int bomb = glfwGetKey(window, GLFW_KEY_N);
@@ -274,11 +276,11 @@ void tick_input(GLFWwindow *window) {
         target = jet.position;
     }
 
-    if (left) {
+    if (right) {
         jet.yawLeft();
         compass.rotation += compass.rotation_speed;
     }
-    if(right)
+    if(left)
     {
         jet.yawRight();
         compass.rotation -= compass.rotation_speed;
@@ -309,6 +311,16 @@ void tick_input(GLFWwindow *window) {
     if(bomb && game_timer % bomb_timer == 0)
     {
         spawn_bombs();
+    }
+    
+    if(accelerate)
+    {
+        jet.acceleration += 0.01;
+    }
+
+    if(retard)
+    {
+        jet.acceleration -= 0.01;
     }
 }
 
