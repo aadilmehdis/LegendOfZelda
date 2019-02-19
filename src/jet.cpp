@@ -11,6 +11,7 @@ Jet::Jet(float x, float y, color_t color) {
 	this->acceleration = 0.5f;
 
 	this->score = 0;
+	this->checkpointAccomplished = 0;
 
 	this->fuelRemaining = 1800;
 	this->percentageDamage = 0;

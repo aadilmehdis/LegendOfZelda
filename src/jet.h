@@ -24,6 +24,7 @@ public:
     long long int fuelRemaining;
 
     long long int score;
+    long long int checkpointAccomplished;
 
     double radius;
 

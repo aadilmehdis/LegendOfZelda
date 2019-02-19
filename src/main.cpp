@@ -322,6 +322,7 @@ void tick_elements() {
                     if(!checkpoints[j].destroyed)
                     {
                         jet.score += 10;
+                        jet.checkpointAccomplished++;
                         checkpoints[j].current = false;
                         checkpoints[j].destroyed = true;
                         arrows[j].current = false;
@@ -367,6 +368,7 @@ void tick_elements() {
                     if(!checkpoints[j].destroyed)
                     {
                         jet.score += 10;
+                        jet.checkpointAccomplished++;
                         checkpoints[j].current = false;
                         checkpoints[j].destroyed = true;
                         arrows[j].current = false;
@@ -735,18 +737,34 @@ void set_ssd(int number, vector<SSD> &ssd) {
 
 void checkGameOver()
 {
+    if(jet.checkpointAccomplished == checkpoints.size())
+    {
+        cout<<"Game Won\n";
+        cout<<"Score : "<<jet.score<<endl;
+        exit(0);
+    }
     if(jet.position.y<-10)
     {
+        cout<<"Game Lost\nCrashed into the Ocean\n";
+        if(jet.fuelRemaining == 0)
+        {
+            cout<<"Out of Fuel\n";
+        }
+        cout<<"Score : "<<jet.score<<endl;
         exit(0);
     }
     if(jet.percentageDamage > 100)
     {
+        cout<<"Game Lost\nAircraft Destoryed\n";
+        cout<<"Score : "<<jet.score<<endl;
         exit(0);
     }
     for(int i=0;i<volcanos.size();++i)
     {
         if(detect_circlePoint(volcanos[i].position, jet.position, volcanos[i].radius))
         {
+            cout<<"Game Lost\nBurnt by the Volcano\n";
+            cout<<"Score : "<<jet.score<<endl;
             exit(0);
         }
     }
