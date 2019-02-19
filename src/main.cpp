@@ -34,6 +34,7 @@ std::vector<Bomb> bombs;
 std::vector<SSD> speed;
 std::vector<SSD> altitude;
 std::vector<SSD> fuel;
+std::vector<SSD> score;
 std::vector<Canon> canons;
 std::vector<CheckPoint> checkpoints;
 std::vector<Volcano> volcanos;
@@ -148,6 +149,10 @@ void draw() {
     for(int i=0; i<altitude.size();++i)
     {
         altitude[i].draw(VP2);
+    }
+    for(int i=0; i<score.size();++i)
+    {
+        score[i].draw(VP2);
     }
     for(int i=0; i<fuel.size();++i)
     {
@@ -467,6 +472,7 @@ void tick_elements() {
     
 
     set_ssd(floor(jet.position.y + 10), altitude);
+    set_ssd(floor(jet.score), score);
     set_ssd(floor(jet.percentageDamage), speed);
     set_ssd(floor(jet.fuelRemaining), fuel);
 
@@ -587,6 +593,7 @@ void spawn_dashboard()
     for(int i=0;i<5;++i)
     {
         altitude.push_back(SSD(-98+i*0.2,-97, COLOR_BLACK));  
+        score.push_back(SSD(-100.5+i*0.2,-103, COLOR_LAVA));  
         speed.push_back(SSD(-103+i*0.2,-97, COLOR_BLACK));           
         fuel.push_back(SSD(-100.5+i*0.2,-97.8, COLOR_BLACK));           
     }

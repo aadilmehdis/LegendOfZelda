@@ -82,13 +82,13 @@ SSD::SSD(float x, float y, color_t color )
         vertex_buffer_g[i] /= 2;
     }
 
-    this->a = create3DObject(GL_TRIANGLES, 6, vertex_buffer_a, COLOR_BLACK, GL_FILL);
-    this->b = create3DObject(GL_TRIANGLES, 6, vertex_buffer_b, COLOR_BLACK, GL_FILL);
-    this->c = create3DObject(GL_TRIANGLES, 6, vertex_buffer_c, COLOR_BLACK, GL_FILL);
-    this->d = create3DObject(GL_TRIANGLES, 6, vertex_buffer_d, COLOR_BLACK, GL_FILL);
-    this->e = create3DObject(GL_TRIANGLES, 6, vertex_buffer_e, COLOR_BLACK, GL_FILL);
-    this->f = create3DObject(GL_TRIANGLES, 6, vertex_buffer_f, COLOR_BLACK, GL_FILL);
-    this->g = create3DObject(GL_TRIANGLES, 6, vertex_buffer_g, COLOR_BLACK, GL_FILL);
+    this->a = create3DObject(GL_TRIANGLES, 6, vertex_buffer_a, color, GL_FILL);
+    this->b = create3DObject(GL_TRIANGLES, 6, vertex_buffer_b, color, GL_FILL);
+    this->c = create3DObject(GL_TRIANGLES, 6, vertex_buffer_c, color, GL_FILL);
+    this->d = create3DObject(GL_TRIANGLES, 6, vertex_buffer_d, color, GL_FILL);
+    this->e = create3DObject(GL_TRIANGLES, 6, vertex_buffer_e, color, GL_FILL);
+    this->f = create3DObject(GL_TRIANGLES, 6, vertex_buffer_f, color, GL_FILL);
+    this->g = create3DObject(GL_TRIANGLES, 6, vertex_buffer_g, color, GL_FILL);
 }
 
 void SSD::draw(glm::mat4 VP) {

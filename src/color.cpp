@@ -20,6 +20,7 @@ const color_t COLOR_SILVER = { 192, 192, 192};
 const color_t COLOR_LIGHT_BROWN = { 208,180,160};
 const color_t COLOR_SUNFLOWER = { 254, 247, 64};
 const color_t COLOR_OCEAN_GREEN = { 121, 208, 174 };
+const color_t COLOR_PRUSSIAN_BLUE = {0,0,139};
 
 
 

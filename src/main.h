@@ -101,5 +101,6 @@ extern const color_t COLOR_SILVER;
 extern const color_t COLOR_LIGHT_BROWN;
 extern const color_t COLOR_SUNFLOWER;
 extern const color_t COLOR_OCEAN_GREEN;
+extern const color_t COLOR_PRUSSIAN_BLUE;
 
 #endif
