@@ -204,8 +204,8 @@ void tick_input(GLFWwindow *window) {
     int accelerate = glfwGetKey(window, GLFW_KEY_O);
     int retard = glfwGetKey(window, GLFW_KEY_P);
 
-    int missile = glfwGetKey(window, GLFW_KEY_M);
-    int bomb = glfwGetKey(window, GLFW_KEY_N);
+    int missile = glfwGetKey(window, GLFW_KEY_SPACE);
+    int bomb = glfwGetKey(window, GLFW_KEY_M);
 
     int followCamView           = glfwGetKey(window, GLFW_KEY_Z);
     int towerView               = glfwGetKey(window, GLFW_KEY_X);
