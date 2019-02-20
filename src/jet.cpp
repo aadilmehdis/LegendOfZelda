@@ -282,7 +282,7 @@ void Jet::tick() {
 	if(this->fuelRemaining < 0)
 	{
 		this->fuelRemaining = 0;
-		this->position += glm::vec3(0,-1,0);
+		this->position += glm::vec3(0,-1,0) * this->acceleration;
 	}
 	if(this->acceleration < 0.5) this->acceleration = 0.5;
 	if(this->acceleration > 3.0) this->acceleration = 3.0;

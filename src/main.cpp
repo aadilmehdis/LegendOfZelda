@@ -14,6 +14,8 @@
 #include "ring.h"
 #include "fueltank.h"
 #include "parachute.h"
+#include "health.h"
+#include "coin.h"
 
 using namespace std;
 
@@ -43,6 +45,8 @@ std::vector<Arrow> arrows;
 std::vector<Ring> rings;
 std::vector<FuelTank> fueltanks;
 std::vector<Parachute> parachutes;
+std::vector<Health> healths;
+std::vector<Coin> coins;
 
 
 long long int game_timer = 0;
@@ -53,7 +57,8 @@ int bomb_timer = 10;
 
 // spawn functions
 void checkGameOver();
-
+void spawn_health();
+void spawn_coins();
 void spawn_missile();
 void spawn_bombs();
 void spawn_dashboard();
@@ -189,6 +194,16 @@ void draw() {
     for(int i=0;i<parachutes.size();++i)
     {
         parachutes[i].draw(VP);
+    }
+    for(int i=0;i<healths.size();++i)
+    {
+        cout<<"Drawn 2\n";
+        healths[i].draw(VP);
+    }
+    for(int i=0;i<coins.size();++i)
+    {
+        cout<<"Drawn\n";
+        coins[i].draw(VP);
     }
 }
 
@@ -473,6 +488,33 @@ void tick_elements() {
         }
     }
 
+    for(int i=0 ; i<coins.size() ; ++i)
+    {
+        coins[i].tick();
+        if(detect_collision(jet.position,coins[i].position,jet.radius,coins[i].radius))
+        {
+            coins.erase(coins.begin() + i);
+            jet.score += 30;
+        }
+    }
+
+    for(int i=0 ; i<healths.size() ; ++i)
+    {
+        healths[i].tick();
+        if(detect_collision(jet.position,healths[i].position,jet.radius,healths[i].radius))
+        {
+            healths.erase(healths.begin() + i);
+            if(jet.percentageDamage > 20)
+            {
+                jet.percentageDamage -= 20;
+            }
+            else
+            {
+                jet.percentageDamage = 0;
+            }
+        }
+    }
+
 
 
     mousetimer++;
@@ -503,6 +545,7 @@ void initGL(GLFWwindow *window, int width, int height) {
     // define the positions of the fuel up
 
     spawn_rings();
+    spawn_health();
     spawn_checkpoints();
     spawn_volcanos();
     spawn_sea();
@@ -556,6 +599,7 @@ int main(int argc, char **argv) {
 
             spawn_canonballs();
             spawn_parachutes();
+            spawn_coins();
 
             tick_elements();
             tick_input(window);
@@ -634,12 +678,32 @@ void spawn_rings()
     rings.push_back(Ring(glm::vec3(430,500,-2300)));
 }
 
+void spawn_health()
+{
+    healths.push_back(Health(glm::vec3(130,50,-430)));
+    healths.push_back(Health(glm::vec3(-230,50,-750)));
+    healths.push_back(Health(glm::vec3(280,200,-1000)));
+    healths.push_back(Health(glm::vec3(80,20,-1250)));
+    healths.push_back(Health(glm::vec3(74,100,-1600)));
+    healths.push_back(Health(glm::vec3(-250,80,-1800)));
+    healths.push_back(Health(glm::vec3(480,500,-2100)));
+}
+
 void spawn_parachutes()
 {
 
     if(game_timer%250==0)
     {
         parachutes.push_back(Parachute(glm::vec3(jet.position.x, jet.position.y ,jet.position.z - 300)));
+    }
+}
+
+void spawn_coins()
+{
+
+    if(game_timer%300==0)
+    {
+        coins.push_back(Coin(glm::vec3(jet.position.x - 20, jet.position.y + 100 ,jet.position.z - 300)));
     }
 }
 
